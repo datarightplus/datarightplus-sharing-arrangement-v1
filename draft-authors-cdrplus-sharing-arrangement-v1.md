@@ -15,6 +15,17 @@ date = 2022-06-27T00:00:00Z
 initials="S."
 surname="Low"
 fullname="Stuart Low"
+organization="Biza.io"
+  [author.address]
+  email = "stuart@biza.io"
+
+[[author]]
+initials="B."
+surname="Kolera"
+fullname="Ben Kolera"
+organization="Biza.io"
+  [author.address]
+  email = "bkolera@biza.io"
 %%%
 
 .# Abstract
