@@ -62,6 +62,7 @@ The authorisation server:
 2. **SHALL NOT** issue refresh tokens for a missing `sharing_duration` or a `sharing_duration` with a value of `0` (see Request Object);
 3. **MUST** support the Holder CDR Arrangement Revocation Endpoint (HCARE)
 5. **MUST** include the CDR Arrangement ID as an attribute in its Introspection Endpoint response
+6. **MUST** support the [@!OIDC-Core] `acr` claim
 
 ### Holder CDR Arrangement Revocation Endpoint (HCARE)
 
@@ -215,6 +216,8 @@ The following additional error code is defined for the HCARE endpoint:
 If the server responds with HTTP status code 503, the client must assume the CDR Arrangement still exists and may retry after a reasonable delay. The server may include a "Retry-After" header in the response to indicate how long the service is expected to be unavailable to the requesting client.
 
 {backmatter}
+
+<reference anchor="OIDC-Core" target="http://openid.net/specs/openid-connect-core-1_0.html"> <front> <title>OpenID Connect Core 1.0 incorporating errata set 1</title> <author initials="N." surname="Sakimura" fullname="Nat Sakimura"> <organization>NRI</organization> </author> <author initials="J." surname="Bradley" fullname="John Bradley"> <organization>Ping Identity</organization> </author> <author initials="M." surname="Jones" fullname="Mike Jones"> <organization>Microsoft</organization> </author> <author initials="B." surname="de Medeiros" fullname="Breno de Medeiros"> <organization>Google</organization> </author> <author initials="C." surname="Mortimore" fullname="Chuck Mortimore"> <organization>Salesforce</organization> </author> <date day="8" month="Nov" year="2014"/> </front> </reference>
 
 <reference anchor="OIDC-Discovery" target="https://openid.net/specs/openid-connect-discovery-1_0.html"> <front> <title>OpenID Connect Discovery 1.0 incorporating errata set 1</title> <author initials="N." surname="Sakimura" fullname="Nat Sakimura"> <organization>NRI</organization> </author> <author initials="J." surname="Bradley" fullname="John Bradley"> <organization>Ping Identity</organization> </author> <author initials="M." surname="Jones" fullname="Mike Jones"> <organization>Microsoft</organization> </author> <author initials="E." surname="Jay"> <organization>Illumila</organization> </author><date day="8" month="Nov" year="2014"/> </front> </reference>
 
