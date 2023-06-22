@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-06-20T00:22:50.567080+00:00",
+  "timestamp": "2023-06-22T00:23:55.008045+00:00",
   "repo": "cdrplus/cdrplus-sharing-arrangement-v1",
   "labels": [
     {
@@ -63,13 +63,13 @@
       "labels": [],
       "body": "Still a draft and there's more to review and change here, but it's a start to align with my tweak to baseline",
       "createdAt": "2023-06-19T10:16:47Z",
-      "updatedAt": "2023-06-19T10:24:08Z",
+      "updatedAt": "2023-06-20T13:14:01Z",
       "baseRepository": "cdrplus/cdrplus-sharing-arrangement-v1",
       "baseRefName": "main",
       "baseRefOid": "7987a4981d7b93f13b9402bc4f52156deaa7dc2f",
       "headRepository": "cdrplus/cdrplus-sharing-arrangement-v1",
       "headRefName": "feature/initial-release-review",
-      "headRefOid": "27ee327710b7eaf4593c56b615d5392ef4f5873d",
+      "headRefOid": "9042e1f4a328bb10f69e14b0bb3a06b121ea985b",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
