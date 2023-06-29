@@ -129,29 +129,29 @@ cdr_arrangement_id=5a1bf696-ee03-408b-b315-97955415d1f0
 
 The authorisation server:
 
-1. **MUST** validate the client credentials as per Section X.X of OAuth2 Client Auth (ref?!)
-2. **MUST** validate the `cdr_arrangement_id` relates to a valid CDR Sharing Arrangement
-3. **MUST** verify the CDR Sharing Arrangement referenced by specified `cdr_arrangement_id` belongs to the client validated by (1)
-
-If all of the above conditions are met the authorisation server:
-
-1. **MUST** immediately invalidate the CDR Arrangement
-2. **MUST** immediately invalidate all Refresh Tokens associated with the CDR Arrangement
-3. **MUST** immediately invalid all Access Tokens associated with the CDR Arrangement
+1. **MUST** validate the client credentials as per Section X.X of OAuth2 Client Auth (ref?!) and;
+2. **MUST** validate the `cdr_arrangement_id` relates to a valid CDR Sharing Arrangement and;
+3. **MUST** verify the CDR Sharing Arrangement referenced by specified `cdr_arrangement_id` belongs to validated client
+4. If all of the above conditions are met the authorisation server:
+   - **MUST** immediately invalidate the CDR Arrangement
+   - **MUST** immediately invalidate all Refresh Tokens associated with the CDR Arrangement
+   - **MUST** immediately invalid all Access Tokens associated with the CDR Arrangement
 
 ### HCARE Response
+
+#### Successful Response
 
 In the event of a successful revocation, the authorisation server:
 
 1. If the CDR Sharing Arrangement is revoked, **MUST** respond with a 204 HTTP status code containing no content
 2. If the CDR Sharing Arrangement was already revoked prior to the request being received, **SHOULD** respond with a 204 HTTP status code containing no content
 
+#### Failure Response
+
 In the event of a failure to validate the CDR Arrangement conditions the authorisation server:
 
-- **MUST** respond with a ### HTTP Status Code containing a JSON payload as per Section X.X of [@!CDRPLUS-BASELINE-ERRORS]
-- **SHOULD** respond with a 503 HTTP Status Code if currently unavailable and **MAY** supply a `Retry-After` indicating the earliest retry time
-
-#### Error Codes
+1. **MUST** respond with a ### HTTP Status Code containing a JSON payload as per Section X.X of [@!CDRPLUS-BASELINE-ERRORS]
+2. **SHOULD** respond with a 503 HTTP Status Code if currently unavailable and **MAY** supply a `Retry-After` indicating the earliest retry time
 
 The following additional error code is defined for the HCARE endpoint:
 
@@ -183,9 +183,6 @@ The Recipient CDR Arrangement (RCARE) Revocation endpoint is a CDR specific endp
 
 The protected resource calls the RCARE endpoint using an HTTP POST [@!RFC7231] request with parameters sent as `application/x-www-form-urlencoded` data as defined in [@!W3C.REC-html5-20141028].
 
-`cdr_arrangement_id`
-**RECOMMENDED**. The CDR Arrangement Identifier previously provided in the token and introspection endpoint responses.
-
 `cdr_arrangement_jwt`
 **REQUIRED**. A single signed [@!JWT] containing the following parameters:
 
@@ -213,7 +210,6 @@ Content-Type: application/x-www-form-urlencoded
 Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey …
 
 cdr_arrangement_jwt=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey ...&
-cdr_arrangement_id=5a1bf696-ee03-408b-b315-97955415d1f0
 ```
 
 The Recipient first validates the Holder credentials and then verifies whether the CDR Arrangement Identifier exists and was issued by the Holder making the CDR Arrangement Revocation request. If this validation fails, the request is refused and the Holder is informed of the error by the RCARE endpoint as described below.
@@ -246,6 +242,7 @@ cdr_arrangement_id=5a1bf696-ee03-408b-b315-97955415d1f0
 The authorisation server:
 
 1. **MUST** validate the client credentials as per Section X.X of OAuth2 Client Auth (ref?!)
+2. **MUST** validate the provided JWT in accordance with [@!JWT]
 2. **MUST** validate the `cdr_arrangement_id` relates to a valid CDR Sharing Arrangement
 3. **MUST** verify the CDR Sharing Arrangement referenced by specified `cdr_arrangement_id` belongs to the client validated by (1)
 
@@ -264,7 +261,7 @@ In the event of a successful revocation, the RCARE:
 
 In the event of a failure to validate the CDR Arrangement conditions the authorisation server:
 
-- **MUST** respond with a ### HTTP Status Code containing a JSON payload as per Section X.X of [@!CDRPLUS-BASELINE-ERRORS]
+- **MUST** respond with a ### HTTP Status Code containing a JSON payload formatted as per Section X.X of [@!CDRPLUS-BASELINE-ERRORS]
 - **SHOULD** respond with a 503 HTTP Status Code if currently unavailable and **MAY** supply a `Retry-After` indicating the earliest retry time
 
 #### Error Codes
