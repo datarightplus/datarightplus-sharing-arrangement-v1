@@ -150,7 +150,7 @@ In the event of a successful revocation, the authorisation server:
 
 In the event of a failure to validate the CDR Arrangement conditions the authorisation server:
 
-1. **MUST** respond with a ### HTTP Status Code containing a JSON payload as per Section X.X of [@!CDRPLUS-BASELINE-ERRORS]
+1. **MUST** respond with a ### HTTP Status Code containing a JSON payload as per Section X.X of [@!CDRPLUS-ERROR-CODES-BASELINE]
 2. **SHOULD** respond with a 503 HTTP Status Code if currently unavailable and **MAY** supply a `Retry-After` indicating the earliest retry time
 
 The following additional error code is defined for the HCARE endpoint:
@@ -261,7 +261,7 @@ In the event of a successful revocation, the RCARE:
 
 In the event of a failure to validate the CDR Arrangement conditions the authorisation server:
 
-- **MUST** respond with a ### HTTP Status Code containing a JSON payload formatted as per Section X.X of [@!CDRPLUS-BASELINE-ERRORS]
+- **MUST** respond with a ### HTTP Status Code containing a JSON payload formatted as per Section X.X of [@!CDRPLUS-ERROR-CODES-BASELINE]
 - **SHOULD** respond with a 503 HTTP Status Code if currently unavailable and **MAY** supply a `Retry-After` indicating the earliest retry time
 
 #### Error Codes
@@ -282,7 +282,7 @@ The following additional error code is defined for the HCARE endpoint:
 
 <reference anchor="CDRPLUS-INFOSEC-BASELINE" target="https://cdrplus.github.io/cdrplus-infosec-baseline/draft-cdrplus-infosec-baseline.html"> <front><title>CDR+ Security Profile: Baseline</title><author initials="S." surname="Low" fullname="Stuart Low"><organization>Biza.io</organization></author></front> </reference>
 
-<reference anchor="CDRPLUS-ENHANCED-ERRORS" target="https://cdrplus.github.io/cdrplus-specs/main/cdrplus-baseline-errors.html"> <front><title>CDR Plus: Enhanced Errors</title><author initials="S." surname="Low" fullname="Stuart Low"><organization>Biza.io</organization></author></front> </reference>
+<reference anchor="CDRPLUS-ERROR-CODES-BASELINE" target="https://cdrplus.github.io/cdrplus-error-codes-baseline/draft-authors-cdrplus-error-codes-baseline.html"> <front><title>CDR+ Error Codes: Baseline</title><author initials="S." surname="Low" fullname="Stuart Low"><organization>Biza.io</organization></author></front> </reference>
 
 <reference anchor="CDRPLUS-ADMISSION-CONTROL" target="https://cdrplus.github.io/cdrplus-admission-control/draft-authors-cdrplus-admission-control.html"> <front><title>CDR Plus: Admission Control</title><author initials="S." surname="Low" fullname="Stuart Low"><organization>Biza.io</organization></author></front> </reference>
 
