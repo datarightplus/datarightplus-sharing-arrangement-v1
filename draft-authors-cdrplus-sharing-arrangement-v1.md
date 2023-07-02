@@ -1,5 +1,5 @@
 %%%
-Title = "CDR Plus: Sharing Arrangement V1"
+Title = "CDR+ Action: Sharing Arrangement V1"
 area = "Internet"
 workgroup = "cdrplus-parity"
 
