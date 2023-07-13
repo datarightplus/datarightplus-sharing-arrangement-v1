@@ -93,9 +93,15 @@ The authorisation server:
 7. **MUST** reject requests referencing a CDR Arrangement that does not match the authenticated Consumer;
 8. **MUST** revoke previously issued access and refresh tokens when a CDR Arrangement is updated
 
+#### Token Related Claims
+
+Within the responses at the Token Endpoint and the Token Introspection Endpoint the authorisation server:
+
+1. **SHALL** include the CDR Arrangement Identifier within the `cdr_arrangement_id` claim
+
 ### Amending Authorisation
 
-5. **MUST** trigger an amendment authorisation flow if a `cdr_arrangement_id` is provided
+1. **MUST** trigger an amendment authorisation flow if a `cdr_arrangement_id` is provided
 
 ## Holder CDR Arrangement Revocation Endpoint (HCARE)
 
