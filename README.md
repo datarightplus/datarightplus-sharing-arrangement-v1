@@ -1,17 +1,17 @@
-# CDR Plus: Sharing Arrangement V1
+# DataRight Plus: Sharing Arrangement V1
 
-This is the working area for the individual Internet-Draft, "CDR Plus: Sharing Arrangement V1".
+This is the working area for the individual Internet-Draft, "DataRight Plus: Sharing Arrangement V1".
 
-* [Editor's Copy](https://cdrplus.github.io/cdrplus-sharing-arrangement-v1/#go.draft-authors-cdrplus-sharing-arrangement-v1.html)
-* [Datatracker Page](https://datatracker.ietf.org/doc/draft-authors-cdrplus-sharing-arrangement-v1)
-* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-authors-cdrplus-sharing-arrangement-v1)
-* [Compare Editor's Copy to Individual Draft](https://cdrplus.github.io/cdrplus-sharing-arrangement-v1/#go.draft-authors-cdrplus-sharing-arrangement-v1.diff)
+* [Editor's Copy](https://datarightplus.github.io/datarightplus-sharing-arrangement-v1/#go.draft-authors-datarightplus-sharing-arrangement-v1.html)
+* [Datatracker Page](https://datatracker.ietf.org/doc/draft-authors-datarightplus-sharing-arrangement-v1)
+* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-authors-datarightplus-sharing-arrangement-v1)
+* [Compare Editor's Copy to Individual Draft](https://datarightplus.github.io/datarightplus-sharing-arrangement-v1/#go.draft-authors-datarightplus-sharing-arrangement-v1.diff)
 
 
 ## Contributing
 
 See the
-[guidelines for contributions](https://github.com/cdrplus/cdrplus-sharing-arrangement-v1/blob/main/CONTRIBUTING.md).
+[guidelines for contributions](https://github.com/datarightplus/datarightplus-sharing-arrangement-v1/blob/main/CONTRIBUTING.md).
 
 Contributions can be made by creating pull requests.
 The GitHub interface supports creating pull requests using the Edit (✏) button.

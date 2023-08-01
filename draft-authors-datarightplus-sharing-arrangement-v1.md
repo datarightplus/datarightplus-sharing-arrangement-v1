@@ -1,11 +1,11 @@
 %%%
-Title = "CDR+ Action: Sharing Arrangement V1"
+Title = "DR+ Action: Sharing Arrangement V1"
 area = "Internet"
-workgroup = "cdrplus-parity"
+workgroup = "datarightplus-parity"
 
 [seriesInfo]
 name = "Internet-Draft"
-value = "draft-authors-cdrplus-sharing-arrangement-v1-latest"
+value = "draft-authors-datarightplus-sharing-arrangement-v1-latest"
 stream = "IETF"
 status = "experimental"
 
@@ -286,10 +286,10 @@ The following additional error code is defined for the HCARE endpoint:
 
 <reference anchor="JWT" target="https://datatracker.ietf.org/doc/html/rfc7519"> <front> <title>JSON Web Token (JWT)</title> <author fullname="M. Jones"> <organization>Microsoft</organization> </author> <author initials="J." surname="Bradley" fullname="John Bradley"> <organization>Ping Identity</organization> </author><author fullname="N. Sakimura"> <organization>Nomura Research Institute</organization> </author> <date month="May" year="2015"/></front> </reference>
 
-<reference anchor="CDRPLUS-INFOSEC-BASELINE" target="https://cdrplus.github.io/cdrplus-infosec-baseline/draft-cdrplus-infosec-baseline.html"> <front><title>CDR+ Security Profile: Baseline</title><author initials="S." surname="Low" fullname="Stuart Low"><organization>Biza.io</organization></author></front> </reference>
+<reference anchor="CDRPLUS-INFOSEC-BASELINE" target="https://datarightplus.github.io/datarightplus-infosec-baseline/draft-datarightplus-infosec-baseline.html"> <front><title>DR+ Security Profile: Baseline</title><author initials="S." surname="Low" fullname="Stuart Low"><organization>Biza.io</organization></author></front> </reference>
 
-<reference anchor="CDRPLUS-ERROR-CODES-BASELINE" target="https://cdrplus.github.io/cdrplus-error-codes-baseline/draft-authors-cdrplus-error-codes-baseline.html"> <front><title>CDR+ Error Codes: Baseline</title><author initials="S." surname="Low" fullname="Stuart Low"><organization>Biza.io</organization></author></front> </reference>
+<reference anchor="CDRPLUS-ERROR-CODES-BASELINE" target="https://datarightplus.github.io/datarightplus-error-codes-baseline/draft-authors-datarightplus-error-codes-baseline.html"> <front><title>DR+ Error Codes: Baseline</title><author initials="S." surname="Low" fullname="Stuart Low"><organization>Biza.io</organization></author></front> </reference>
 
-<reference anchor="CDRPLUS-ADMISSION-CONTROL" target="https://cdrplus.github.io/cdrplus-admission-control/draft-authors-cdrplus-admission-control.html"> <front><title>CDR Plus: Admission Control</title><author initials="S." surname="Low" fullname="Stuart Low"><organization>Biza.io</organization></author></front> </reference>
+<reference anchor="CDRPLUS-ADMISSION-CONTROL" target="https://datarightplus.github.io/datarightplus-admission-control/draft-authors-datarightplus-admission-control.html"> <front><title>DataRight Plus: Admission Control</title><author initials="S." surname="Low" fullname="Stuart Low"><organization>Biza.io</organization></author></front> </reference>
 
 <reference anchor="FAPI-1.0-Baseline" target="https://openid.net/specs/openid-financial-api-part-1-1_0.html"> <front><title abbrev="FAPI 1.0 Baseline">Financial-grade API Security Profile 1.0 - Part 1: Baseline</title><author initials="N." surname="Sakimura" fullname="Nat Sakimura"><organization>Nat Consulting</organization></author><author initials="J." surname="Bradley" fullname="John Bradley"><organization>Yubico</organization></author><author initials="E." surname="Jay" fullname="Illumila"><organization>Illumila</organization></author></front> </reference>
