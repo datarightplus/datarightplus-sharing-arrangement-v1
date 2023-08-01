@@ -1,7 +1,7 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-07-30T00:24:13.720458+00:00",
-  "repo": "cdrplus/cdrplus-sharing-arrangement-v1",
+  "timestamp": "2023-08-01T00:25:35.154674+00:00",
+  "repo": "datarightplus/datarightplus-sharing-arrangement-v1",
   "labels": [
     {
       "name": "bug",
@@ -55,7 +55,7 @@
       "number": 1,
       "id": "PR_kwDOJxPKGc5TUwS4",
       "title": "Initial Release Review",
-      "url": "https://github.com/cdrplus/cdrplus-sharing-arrangement-v1/pull/1",
+      "url": "https://github.com/datarightplus/datarightplus-sharing-arrangement-v1/pull/1",
       "state": "MERGED",
       "author": "benkolera",
       "authorAssociation": "CONTRIBUTOR",
@@ -64,10 +64,10 @@
       "body": "Still a draft and there's more to review and change here, but it's a start to align with my tweak to baseline",
       "createdAt": "2023-06-19T10:16:47Z",
       "updatedAt": "2023-07-02T00:52:05Z",
-      "baseRepository": "cdrplus/cdrplus-sharing-arrangement-v1",
+      "baseRepository": "datarightplus/datarightplus-sharing-arrangement-v1",
       "baseRefName": "main",
       "baseRefOid": "7987a4981d7b93f13b9402bc4f52156deaa7dc2f",
-      "headRepository": "cdrplus/cdrplus-sharing-arrangement-v1",
+      "headRepository": "datarightplus/datarightplus-sharing-arrangement-v1",
       "headRefName": "feature/initial-release-review",
       "headRefOid": "7eb5cb2117179cf93a5cd9b3ba8f4849b358a125",
       "closedAt": "2023-07-02T00:52:05Z",
