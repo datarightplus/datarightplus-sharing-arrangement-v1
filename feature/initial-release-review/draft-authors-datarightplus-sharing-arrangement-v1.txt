@@ -1,0 +1,539 @@
+
+
+
+
+datarightplus-parity                                              S. Low
+Internet-Draft                                                 B. Kolera
+Intended status: Experimental                                    Biza.io
+Expires: 2 February 2024                                   1 August 2023
+
+
+                   DR+ Action: Sharing Arrangement V1
+       draft-authors-datarightplus-sharing-arrangement-v1-latest
+
+Abstract
+
+   Describes the CDR Sharing Arrangement V1
+
+Notational Conventions
+
+   The keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+   document are to be interpreted as described in [RFC2119].
+
+Status of This Memo
+
+   This Internet-Draft is submitted in full conformance with the
+   provisions of BCP 78 and BCP 79.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF).  Note that other groups may also distribute
+   working documents as Internet-Drafts.  The list of current Internet-
+   Drafts is at https://datatracker.ietf.org/drafts/current/.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on 2 February 2024.
+
+Copyright Notice
+
+   Copyright (c) 2023 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents (https://trustee.ietf.org/
+   license-info) in effect on the date of publication of this document.
+   Please review these documents carefully, as they describe your rights
+   and restrictions with respect to this document.  Code Components
+   extracted from this document must include Revised BSD License text as
+   described in Section 4.e of the Trust Legal Provisions and are
+   provided without warranty as described in the Revised BSD License.
+
+Table of Contents
+
+   1.  Scope
+   2.  Terms & Definitions
+   3.  Data Holder
+     3.1.  Authorisation Server
+       3.1.1.  Request Object
+       3.1.2.  Claims
+       3.1.3.  Amending Authorisation
+     3.2.  Holder CDR Arrangement Revocation Endpoint (HCARE)
+       3.2.1.  HCARE Discovery
+       3.2.2.  HCARE Request
+       3.2.3.  HCARE Response
+   4.  Software Product
+     4.1.  Authorisation Client
+     4.2.  Recipient CDR Arrangement Revocation Endpoint (RCARE)
+       4.2.1.  RCARE Request
+       4.2.2.  RCARE Response
+       4.2.3.  RCARE Response
+   5.  Normative References
+   Authors' Addresses
+
+1.  Scope
+
+2.  Terms & Definitions
+
+   This specification uses the terms "Consumer", "Data Holder", "Data
+   Recipient", "Personally Identifiable Information (PII)", "Pairwise
+   Pseudonymous Identifier (PPID)", "Software Product" as defined by
+   [CDRPLUS-INFOSEC-BASELINE].
+
+   CDR Sharing Arrangement CDR Sharing Arrangement Identifier Once Off
+   Authorisation
+
+3.  Data Holder
+
+   The following provisions apply to participants considered a Data
+   Holder.
+
+3.1.  Authorisation Server
+
+   The authorisation server:
+
+   1.  SHALL issue access tokens in alignment with
+       [CDRPLUS-INFOSEC-BASELINE] and on successful completion of an
+       authorisation flow
+
+   2.  SHALL issue refresh tokens with an expiry matched to the CDR
+       Arrangement;
+
+   3.  SHOULD NOT issue refresh tokens which which a sharing_duration
+       was not provided or was provided with a value of 0 (see Request
+       Object)
+
+   4.  MUST support the Holder CDR Arrangement Revocation Endpoint
+       (HCARE)
+
+   5.  MUST include the CDR Arrangement ID as an attribute in its
+       Introspection Endpoint response
+
+   6.  MUST support the [OIDC-Core] acr claim
+
+3.1.1.  Request Object
+
+   The request object submitted to the authorisation server:
+
+   1.  MUST support a claim parameter of sharing_duration representing
+       the number of seconds, as an integer, to request a CDR Sharing
+       Arrangement;
+
+   2.  MUST consider sharing_duration lengths exceeding 31536000 to be
+       equal to 31536000;
+
+   3.  MUST treat a sharing_duration of 0 as a Once Off Authorisation;
+
+   4.  MUST treat a missing sharing_duration as a Once Off
+       Authorisation;
+
+   5.  SHOULD reject sharing_duration values less than 0;
+
+   6.  MUST support a claim parameter of cdr_arrangement_id referencing
+       an existing CDR Arrangement (see CDR Arrangement Identifier);
+
+   7.  MUST reject requests containing an unknown cdr_arrangement_id;
+
+3.1.2.  Claims
+
+   The authorisation server:
+
+   1.   MUST support the claim refresh_token_expires_at representing the
+        expiry of the refresh token as a numeric epoch.  If no refresh
+        token has been provided a 0 SHOULD be returned;
+
+   2.   MUST support the claim sharing_expires_at representing the
+        expiry of the CDR Arrangement.  If a sharing_duration was not
+        specified in the authorisation request object then a 0 SHOULD be
+        returned;
+
+   3.   SHOULD ensure the exp claim within refresh tokens is equal to
+        the sharing_expires_at claim;
+
+   4.   MUST support the claim cdr_arrangement_id representing a unique
+        identifier for the CDR Arrangement;
+
+   5.   MUST ensure the cdr_arrangement_id is non-guessable;
+
+   6.   MUST ensure the cdr_arrangement_id does not identify the
+        Consumer;
+
+   7.   SHOULD ensure the cdr_arrangement_id is collision resistant;
+
+   8.   MUST ensure the cdr_arrangement_id claim, if specified within
+        the request object and valid, remains static across
+        authorisation flows;
+
+   9.   MUST reject requests referencing a CDR Arrangement which has
+        expired;
+
+   10.  MUST reject requests referencing a CDR Arrangement that does not
+        match the authenticated Consumer;
+
+   11.  MUST revoke previously issued access and refresh tokens when a
+        CDR Arrangement is updated
+
+3.1.2.1.  Token Related Claims
+
+   Within the responses at the Token Endpoint and the Token
+   Introspection Endpoint the authorisation server:
+
+   1.  SHALL include the CDR Arrangement Identifier within the
+       cdr_arrangement_id claim
+
+3.1.3.  Amending Authorisation
+
+   1.  MUST trigger an amendment authorisation flow if a
+       cdr_arrangement_id is provided
+
+3.2.  Holder CDR Arrangement Revocation Endpoint (HCARE)
+
+   The Holder CDR Arrangement (HCARE) Revocation endpoint accepts a CDR
+   Arrangement Identifier and immediately revokes the CDR Sharing
+   Arrangement.
+
+3.2.1.  HCARE Discovery
+
+   The HCARE endpoint MUST be advertised using the
+   cdr_arrangement_revocation_endpoint attribute at the OpenID Connect
+   Discovery 1.0 [OIDC-Discovery] endpoint.
+
+3.2.2.  HCARE Request
+
+   The HCARE endpoint receives requests using the HTTP POST [RFC7231]
+   method with parameters sent as application/x-www-form-urlencoded data
+   as defined in [W3C.REC-html5-20141028].
+
+   In addition to authentication credentials described in Section 2.2 of
+   [RFC7523] the endpoint includes the CDR Arrangement Identifier as an
+   additional parameter, specified as follows:
+
+   *  cdr_arrangement_id: REQUIRED The CDR Arrangement Identifier
+      previously provided in the token and introspection endpoint
+      responses.
+
+   An example request to the Holder CDR Arrangement Revocation Endpoint
+   is as follows:
+
+POST https://data.holder.com.au/arrangements/revoke
+HTTP/1.1
+Host: data.holder.com.au
+Content-Type: application/x-www-form-urlencoded
+
+client_id=s6BhdRkqt3&
+client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&
+client_assertion=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey ...&
+cdr_arrangement_id=5a1bf696-ee03-408b-b315-97955415d1f0
+
+   The authorisation server:
+
+   1.  MUST validate the client credentials as per Section X.X of OAuth2
+       Client Auth (ref?!) and;
+
+   2.  MUST validate the cdr_arrangement_id relates to a valid CDR
+       Sharing Arrangement and;
+
+   3.  MUST verify the CDR Sharing Arrangement referenced by specified
+       cdr_arrangement_id belongs to validated client
+
+   4.  If all of the above conditions are met the authorisation server:
+
+       *  MUST immediately invalidate the CDR Arrangement
+
+       *  MUST immediately invalidate all Refresh Tokens associated with
+          the CDR Arrangement
+
+       *  MUST immediately invalid all Access Tokens associated with the
+          CDR Arrangement
+
+3.2.3.  HCARE Response
+
+3.2.3.1.  Successful Response
+
+   In the event of a successful revocation, the authorisation server:
+
+   1.  If the CDR Sharing Arrangement is revoked, MUST respond with a
+       204 HTTP status code containing no content
+
+   2.  If the CDR Sharing Arrangement was already revoked prior to the
+       request being received, SHOULD respond with a 204 HTTP status
+       code containing no content
+
+3.2.3.2.  Failure Response
+
+   In the event of a failure to validate the CDR Arrangement conditions
+   the authorisation server:
+
+   1.  MUST respond with a ### HTTP Status Code containing a JSON
+       payload as per Section X.X of [CDRPLUS-ERROR-CODES-BASELINE]
+
+   2.  SHOULD respond with a 503 HTTP Status Code if currently
+       unavailable and MAY supply a Retry-After indicating the earliest
+       retry time
+
+   The following additional error code is defined for the HCARE
+   endpoint:
+
+     +=======================+=================+====================+
+     | Code                  | Description     | Error Detail       |
+     +=======================+=================+====================+
+     | urn:au-cds:error:cds- | The arrangement | The provided       |
+     | all:Authorisation/    | could not be    | cdr_arrangement_id |
+     | InvalidArrangement    | found.          | value              |
+     +-----------------------+-----------------+--------------------+
+
+                                 Table 1
+
+4.  Software Product
+
+   The following provisions apply to participants operating individual
+   Software Products.
+
+4.1.  Authorisation Client
+
+   A Software Product which operates as an authorisation client:
+
+   1.  SHALL supported the provisions specified in Section X of
+       [CDRPLUS-INFOSEC-BASELINE]
+
+   2.  MUST call the HCARE when requested by a Consumer
+
+   3.  MUST call the HCARE after successful collection if operating on a
+       Once Off Authorisation and a Refresh Token was supplied by the
+       Holder
+
+   4.  MAY during Request Object creation provide the cdr_arrangement_id
+       of an existing arrangement
+
+   5.  MUST support the Recipient CDR Arrangement Revocation Endpoint
+       (RCARE)
+
+   6.  MUST retry requests to the HCARE where the response received was
+       a HTTP Status 503.  The retry time SHOULD be informed by the
+       presence of the Retry-After header.
+
+4.2.  Recipient CDR Arrangement Revocation Endpoint (RCARE)
+
+   The Recipient CDR Arrangement (RCARE) Revocation endpoint is a CDR
+   specific endpoint that accepts a CDR Arrangement Identifier and
+   immediately revokes the CDR Sharing Arrangement.
+
+4.2.1.  RCARE Request
+
+   The protected resource calls the RCARE endpoint using an HTTP POST
+   [RFC7231] request with parameters sent as application/x-www-form-
+   urlencoded data as defined in [W3C.REC-html5-20141028].
+
+   cdr_arrangement_jwt REQUIRED.  A single signed [JWT] containing the
+   following parameters:
+
+   1.  cdr_arrangement_id representing the CDR Arrangement Identifier
+       previously provided in the token and introspection endpoint
+       responses;
+
+   2.  iss: The Holder Brand ID as per Section X.X in
+       [CDRPLUS-ADMISSION-CONTROL]
+
+   3.  sub: The Holder Brand ID as per Section X.X in
+       [CDRPLUS-ADMISSION-CONTROL]
+
+   4.  aud: The URI to the RCARE Endpoint as per Section X.X in
+       [CDRPLUS-ADMISSION-CONTROL]
+
+   5.  jti: A unique identifier for the token
+
+   6.  exp: Expiration time on or after the JWT must not be accepted
+
+   In addition, the client includes an Authorization header parameter
+   with a Bearer token containing a single signed [JWT] with the
+   following parameters:
+
+   1.  iss: The Holder Brand ID as per Section X.X in
+       [CDRPLUS-ADMISSION-CONTROL]
+
+   2.  sub: The Holder Brand ID as per Section X.X in
+       [CDRPLUS-ADMISSION-CONTROL]
+
+   3.  aud: The URI to the RCARE Endpoint as per Section X.X in
+       [CDRPLUS-ADMISSION-CONTROL]
+
+   4.  jti: A unique identifier for the token
+
+   5.  exp: Expiration time on or after the JWT must not be accepted
+
+   For example, a Holder may request CDR Arrangement revocation with the
+   following request:
+
+POST https://data.recipient.com.au/arrangements/revoke HTTP/1.1
+Host: data.recipient.com.au
+Content-Type: application/x-www-form-urlencoded
+Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey …
+
+cdr_arrangement_jwt=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey ...&
+
+   The Recipient first validates the Holder credentials and then
+   verifies whether the CDR Arrangement Identifier exists and was issued
+   by the Holder making the CDR Arrangement Revocation request.  If this
+   validation fails, the request is refused and the Holder is informed
+   of the error by the RCARE endpoint as described below.
+
+   In the next step, the Recipient invalidates the CDR Arrangement and
+   SHOULD discard associated tokens.  Data Minimisation events SHOULD
+   also be triggered on receipt of this event.
+
+4.2.2.  RCARE Response
+
+   The HCARE endpoint receives requests using the HTTP POST [RFC7231]
+   method with parameters sent as application/x-www-form-urlencoded data
+   as defined in [W3C.REC-html5-20141028].
+
+   In addition to authentication credentials described in Section 2.2 of
+   [RFC7523] the endpoint includes the CDR Arrangement Identifier as an
+   additional parameter, specified as follows:
+
+   *  cdr_arrangement_id: REQUIRED The CDR Arrangement Identifier
+      previously provided in the token and introspection endpoint
+      responses.
+
+   An example request to the Holder CDR Arrangement Revocation Endpoint
+   is as follows:
+
+POST https://data.holder.com.au/arrangements/revoke
+HTTP/1.1
+Host: data.holder.com.au
+Content-Type: application/x-www-form-urlencoded
+
+client_id=s6BhdRkqt3&
+client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&
+client_assertion=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey ...&
+cdr_arrangement_id=5a1bf696-ee03-408b-b315-97955415d1f0
+
+   The authorisation server:
+
+   1.  MUST validate the client credentials as per Section X.X of OAuth2
+       Client Auth (ref?!)
+
+   2.  MUST validate the provided JWT in accordance with [JWT]
+
+   3.  MUST validate the cdr_arrangement_id relates to a valid CDR
+       Sharing Arrangement
+
+   4.  MUST verify the CDR Sharing Arrangement referenced by specified
+       cdr_arrangement_id belongs to the client validated by (1)
+
+   If all of the above conditions are met the authorisation server:
+
+   1.  MUST immediately invalidate the CDR Arrangement
+
+   2.  MUST immediately invalidate all Refresh Tokens associated with
+       the CDR Arrangement
+
+   3.  MUST immediately invalid all Access Tokens associated with the
+       CDR Arrangement
+
+4.2.3.  RCARE Response
+
+   In the event of a successful revocation, the RCARE:
+
+   1.  If the CDR Sharing Arrangement is revoked, MUST respond with a
+       204 HTTP status code containing no content
+
+   2.  If the CDR Sharing Arrangement was already revoked prior to the
+       request being received, SHOULD respond with a 204 HTTP status
+       code containing no content
+
+   In the event of a failure to validate the CDR Arrangement conditions
+   the authorisation server:
+
+   *  MUST respond with a ### HTTP Status Code containing a JSON payload
+      formatted as per Section X.X of [CDRPLUS-ERROR-CODES-BASELINE]
+
+   *  SHOULD respond with a 503 HTTP Status Code if currently
+      unavailable and MAY supply a Retry-After indicating the earliest
+      retry time
+
+4.2.3.1.  Error Codes
+
+   The following additional error code is defined for the HCARE
+   endpoint:
+
+     +=======================+=================+====================+
+     | Code                  | Description     | Error Detail       |
+     +=======================+=================+====================+
+     | urn:au-cds:error:cds- | The arrangement | The provided       |
+     | all:Authorisation/    | could not be    | cdr_arrangement_id |
+     | InvalidArrangement    | found.          | value              |
+     +-----------------------+-----------------+--------------------+
+
+                                 Table 2
+
+5.  Normative References
+
+   [CDRPLUS-ADMISSION-CONTROL]
+              Low, S., "DataRight Plus: Admission Control",
+              <https://datarightplus.github.io/datarightplus-admission-
+              control/draft-authors-datarightplus-admission-
+              control.html>.
+
+   [CDRPLUS-ERROR-CODES-BASELINE]
+              Low, S., "DR+ Error Codes: Baseline",
+              <https://datarightplus.github.io/datarightplus-error-
+              codes-baseline/draft-authors-datarightplus-error-codes-
+              baseline.html>.
+
+   [CDRPLUS-INFOSEC-BASELINE]
+              Low, S., "DR+ Security Profile: Baseline",
+              <https://datarightplus.github.io/datarightplus-infosec-
+              baseline/draft-datarightplus-infosec-baseline.html>.
+
+   [JWT]      Jones, M., Bradley, J., and N. Sakimura, "JSON Web Token
+              (JWT)", May 2015,
+              <https://datatracker.ietf.org/doc/html/rfc7519>.
+
+   [OIDC-Core]
+              Sakimura, N., Bradley, J., Jones, M., de Medeiros, B., and
+              C. Mortimore, "OpenID Connect Core 1.0 incorporating
+              errata set 1", 8 November 2014,
+              <http://openid.net/specs/openid-connect-core-1_0.html>.
+
+   [OIDC-Discovery]
+              Sakimura, N., Bradley, J., Jones, M., and E. Jay, "OpenID
+              Connect Discovery 1.0 incorporating errata set 1", 8
+              November 2014, <https://openid.net/specs/openid-connect-
+              discovery-1_0.html>.
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              <https://www.rfc-editor.org/info/rfc2119>.
+
+   [RFC7231]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
+              Protocol (HTTP/1.1): Semantics and Content", RFC 7231,
+              DOI 10.17487/RFC7231, June 2014,
+              <https://www.rfc-editor.org/info/rfc7231>.
+
+   [RFC7523]  Jones, M., Campbell, B., and C. Mortimore, "JSON Web Token
+              (JWT) Profile for OAuth 2.0 Client Authentication and
+              Authorization Grants", RFC 7523, DOI 10.17487/RFC7523, May
+              2015, <https://www.rfc-editor.org/info/rfc7523>.
+
+   [W3C.REC-html5-20141028]
+              Navara, E. D., Ed., Hickson, I., Ed., Berjon, R., Ed.,
+              Pfeiffer, S., Ed., Faulkner, S., Ed., O'Connor, T., Ed.,
+              and T. Leithead, Ed., "HTML5", W3C REC REC-html5-20141028,
+              W3C REC-html5-20141028, 28 October 2014,
+              <https://www.w3.org/TR/2014/REC-html5-20141028/>.
+
+Authors' Addresses
+
+   Stuart Low
+   Biza.io
+   Email: stuart@biza.io
+
+
+   Ben Kolera
+   Biza.io
+   Email: bkolera@biza.io
