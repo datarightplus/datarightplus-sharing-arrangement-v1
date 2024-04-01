@@ -4,29 +4,29 @@
 <meta charset="utf-8">
 <meta content="Common,Latin" name="scripts">
 <meta content="initial-scale=1.0" name="viewport">
-<title>DR+ Action: Sharing Arrangement V1</title>
+<title>DataRight+: Sharing Arrangement V1</title>
 <meta content="Stuart Low" name="author">
 <meta content="Ben Kolera" name="author">
 <meta content="
-       Describes the CDR Sharing Arrangement V1 
+       This specification outlines the technical requirements related to the delivery of Sharing Arrangement V1. 
     " name="description">
-<meta content="xml2rfc 3.17.4" name="generator">
+<meta content="xml2rfc 3.20.1" name="generator">
 <meta content="draft-authors-datarightplus-sharing-arrangement-v1-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.17.4
-    Python 3.11.4
-    ConfigArgParse 1.5.3
+  xml2rfc 3.20.1
+    Python 3.11.8
+    ConfigArgParse 1.7
     google-i18n-address 3.1.0
     intervaltree 3.1.0
     Jinja2 3.1.2
     lxml 4.9.3
-    platformdirs 3.9.1
+    platformdirs 4.2.0
     pycountry 22.3.5
-    PyYAML 6.0
+    PyYAML 6.0.1
     requests 2.31.0
-    setuptools 67.7.2
+    setuptools 68.2.2
     six 1.16.0
-    wcwidth 0.2.6
+    wcwidth 0.2.13
 -->
 <link href="draft-authors-datarightplus-sharing-arrangement-v1.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -649,7 +649,7 @@ sub, sup {
 }
 #toc nav li {
   line-height: 1.3em;
-  margin: 0.75em 0;
+  margin: 2px 0;
   padding-left: 1.2em;
   text-indent: -1.2em;
 }
@@ -742,7 +742,7 @@ hr.addr {
     z-index: 2;
     top: 0;
     right: 0;
-    padding: 0;
+    padding: 1px 0 0 0;
     margin: 0;
     border-bottom: 1px solid #ccc;
     opacity: 0.6;
@@ -866,16 +866,13 @@ hr.addr {
     border-top: none;
     padding-top: 0;
   }
-  figure, pre {
+  figure, pre, .vcard {
     page-break-inside: avoid;
-  }
-  figure {
-    overflow: scroll;
   }
   h1, h2, h3, h4, h5, h6 {
     page-break-after: avoid;
   }
-  h2+*, h3+*, h4+*, h5+*, h6+* {
+  :is(h2, h3, h4, h5, h6)+*, dd {
     page-break-before: avoid;
   }
   pre {
@@ -888,6 +885,9 @@ hr.addr {
   }
   td {
     border-top: 1px solid #ddd;
+  }
+  .toplink {
+    display: none;
   }
 }
 
@@ -989,28 +989,6 @@ address div.right {
   text-align: right;
 }
 
-/* Give the table caption label the same styling as the figcaption */
-
-@media print {
-  .toplink {
-    display: none;
-  }
-
-  /* avoid overwriting the top border line with the ToC header */
-  #toc {
-    padding-top: 1px;
-  }
-
-  /* Avoid page breaks inside dl and author address entries */
-  dd {
-    page-break-before: avoid;
-  }
-  .vcard {
-    page-break-inside: avoid;
-  }
-
-}
-
 /* Dark mode. */
 @media (prefers-color-scheme: dark) {
 :root {
@@ -1046,12 +1024,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <table class="ears">
 <thead><tr>
 <td class="left">Internet-Draft</td>
-<td class="center">DR+ Action: Sharing Arrangement V1</td>
-<td class="right">August 2023</td>
+<td class="center">DataRight+: Sharing Arrangement V1</td>
+<td class="right">April 2024</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Low &amp; Kolera</td>
-<td class="center">Expires 2 February 2024</td>
+<td class="center">Expires 3 October 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1059,17 +1037,17 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <div id="internal-metadata" class="document-information">
 <dl id="identifiers">
 <dt class="label-workgroup">Workgroup:</dt>
-<dd class="workgroup">datarightplus-parity</dd>
+<dd class="workgroup">datarightplus</dd>
 <dt class="label-internet-draft">Internet-Draft:</dt>
 <dd class="internet-draft">draft-authors-datarightplus-sharing-arrangement-v1-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2023-08-01" class="published">1 August 2023</time>
+<time datetime="2024-04-01" class="published">1 April 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Experimental</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-02-02">2 February 2024</time></dd>
+<dd class="expires"><time datetime="2024-10-03">3 October 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1083,16 +1061,16 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </dd>
 </dl>
 </div>
-<h1 id="title">DR+ Action: Sharing Arrangement V1</h1>
+<h1 id="title">DataRight+: Sharing Arrangement V1</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
-<p id="section-abstract-1">Describes the CDR Sharing Arrangement V1<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-1">This specification outlines the technical requirements related to the delivery of Sharing Arrangement V1.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
 <section class="note" id="section-note.1">
       <h2 id="name-notational-conventions">
 <a href="#name-notational-conventions" class="section-name selfRef">Notational Conventions</a>
       </h2>
-<p id="section-note.1-1">The keywords "<span class="bcp14">MUST</span>", "<span class="bcp14">MUST NOT</span>", "<span class="bcp14">REQUIRED</span>", "<span class="bcp14">SHALL</span>", "<span class="bcp14">SHALL NOT</span>", "<span class="bcp14">SHOULD</span>", "<span class="bcp14">SHOULD NOT</span>", "<span class="bcp14">RECOMMENDED</span>",  "<span class="bcp14">MAY</span>", and "<span class="bcp14">OPTIONAL</span>" in this document are to be interpreted as described in <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span>.<a href="#section-note.1-1" class="pilcrow">¶</a></p>
+<p id="section-note.1-1">The keywords  "<span class="bcp14">REQUIRED</span>", "<span class="bcp14">SHALL</span>", "<span class="bcp14">SHALL NOT</span>", "<span class="bcp14">SHOULD</span>", "<span class="bcp14">SHOULD NOT</span>", "<span class="bcp14">RECOMMENDED</span>",  "<span class="bcp14">MAY</span>", and "<span class="bcp14">OPTIONAL</span>" in this document are to be interpreted as described in <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span>.<a href="#section-note.1-1" class="pilcrow">¶</a></p>
 </section>
 <div id="status-of-memo">
 <section id="section-boilerplate.1">
@@ -1113,7 +1091,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 2 February 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 3 October 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1122,7 +1100,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <a href="#name-copyright-notice" class="section-name selfRef">Copyright Notice</a>
         </h2>
 <p id="section-boilerplate.2-1">
-            Copyright (c) 2023 IETF Trust and the persons identified as the
+            Copyright (c) 2024 IETF Trust and the persons identified as the
             document authors. All rights reserved.<a href="#section-boilerplate.2-1" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.2-2">
             This document is subject to BCP 78 and the IETF Trust's Legal
@@ -1130,10 +1108,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
             (<span><a href="https://trustee.ietf.org/license-info">https://trustee.ietf.org/license-info</a></span>) in effect on the date of
             publication of this document. Please review these documents
             carefully, as they describe your rights and restrictions with
-            respect to this document. Code Components extracted from this
-            document must include Revised BSD License text as described in
-            Section 4.e of the Trust Legal Provisions and are provided without
-            warranty as described in the Revised BSD License.<a href="#section-boilerplate.2-2" class="pilcrow">¶</a></p>
+            respect to this document.<a href="#section-boilerplate.2-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="toc">
@@ -1149,7 +1124,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-terms-definitions" class="internal xref">Terms &amp; Definitions</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
-            <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-data-holder" class="internal xref">Data Holder</a></p>
+            <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-provider" class="internal xref">Provider</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
                 <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-authorisation-server" class="internal xref">Authorisation Server</a></p>
@@ -1160,54 +1135,54 @@ svg :is([fill="white"], [fill^="#fff"]) {
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1.2.2">
                     <p id="section-toc.1-1.3.2.1.2.2.1"><a href="#section-3.1.2" class="auto internal xref">3.1.2</a>.  <a href="#name-claims" class="internal xref">Claims</a></p>
 </li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1.2.3">
-                    <p id="section-toc.1-1.3.2.1.2.3.1"><a href="#section-3.1.3" class="auto internal xref">3.1.3</a>.  <a href="#name-amending-authorisation" class="internal xref">Amending Authorisation</a></p>
-</li>
                 </ul>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
-                <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-holder-cdr-arrangement-revo" class="internal xref">Holder CDR Arrangement Revocation Endpoint (HCARE)</a></p>
+                <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-provider-cdr-arrangement-re" class="internal xref">Provider CDR Arrangement Revocation Endpoint (PCARE)</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2.2.1">
-                    <p id="section-toc.1-1.3.2.2.2.1.1"><a href="#section-3.2.1" class="auto internal xref">3.2.1</a>.  <a href="#name-hcare-discovery" class="internal xref">HCARE Discovery</a></p>
+                    <p id="section-toc.1-1.3.2.2.2.1.1"><a href="#section-3.2.1" class="auto internal xref">3.2.1</a>.  <a href="#name-pcare-discovery" class="internal xref">PCARE Discovery</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2.2.2">
-                    <p id="section-toc.1-1.3.2.2.2.2.1"><a href="#section-3.2.2" class="auto internal xref">3.2.2</a>.  <a href="#name-hcare-request" class="internal xref">HCARE Request</a></p>
+                    <p id="section-toc.1-1.3.2.2.2.2.1"><a href="#section-3.2.2" class="auto internal xref">3.2.2</a>.  <a href="#name-pcare-request" class="internal xref">PCARE Request</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2.2.3">
-                    <p id="section-toc.1-1.3.2.2.2.3.1"><a href="#section-3.2.3" class="auto internal xref">3.2.3</a>.  <a href="#name-hcare-response" class="internal xref">HCARE Response</a></p>
+                    <p id="section-toc.1-1.3.2.2.2.3.1"><a href="#section-3.2.3" class="auto internal xref">3.2.3</a>.  <a href="#name-pcare-response" class="internal xref">PCARE Response</a></p>
 </li>
                 </ul>
 </li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
-            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-software-product" class="internal xref">Software Product</a></p>
+            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-initiator" class="internal xref">Initiator</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-authorisation-client" class="internal xref">Authorisation Client</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
-                <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-recipient-cdr-arrangement-r" class="internal xref">Recipient CDR Arrangement Revocation Endpoint (RCARE)</a></p>
+                <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-initiator-cdr-arrangement-r" class="internal xref">Initiator CDR Arrangement Revocation Endpoint (ICARE)</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2.2.1">
-                    <p id="section-toc.1-1.4.2.2.2.1.1"><a href="#section-4.2.1" class="auto internal xref">4.2.1</a>.  <a href="#name-rcare-request" class="internal xref">RCARE Request</a></p>
+                    <p id="section-toc.1-1.4.2.2.2.1.1"><a href="#section-4.2.1" class="auto internal xref">4.2.1</a>.  <a href="#name-icare-request" class="internal xref">ICARE Request</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2.2.2">
-                    <p id="section-toc.1-1.4.2.2.2.2.1"><a href="#section-4.2.2" class="auto internal xref">4.2.2</a>.  <a href="#name-rcare-response" class="internal xref">RCARE Response</a></p>
-</li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2.2.3">
-                    <p id="section-toc.1-1.4.2.2.2.3.1"><a href="#section-4.2.3" class="auto internal xref">4.2.3</a>.  <a href="#name-rcare-response-2" class="internal xref">RCARE Response</a></p>
+                    <p id="section-toc.1-1.4.2.2.2.2.1"><a href="#section-4.2.2" class="auto internal xref">4.2.2</a>.  <a href="#name-icare-response" class="internal xref">ICARE Response</a></p>
 </li>
                 </ul>
 </li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
-            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-implementation-consideratio" class="internal xref">Implementation Considerations</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
-            <p id="section-toc.1-1.6.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+            <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+            <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+            <p id="section-toc.1-1.8.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
 </li>
         </ul>
 </nav>
@@ -1217,7 +1192,8 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <section id="section-1">
       <h2 id="name-scope">
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-scope" class="section-name selfRef">Scope</a>
-    </h2>
+      </h2>
+<p id="section-1-1">The scope of this specification is focused on describing the authorisation related components of establishing a CDR Sharing Arrangement. This specification unavoidably references ecosystem specific concepts (Australian CDR) due to the very nature of localised claim names. Sharing Arrangement V1 therefore is aligned with the definition of a CDR Arrangement as originally outlined within <span>[<a href="#CDS" class="cite xref">CDS</a>]</span>.<a href="#section-1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="terms-definitions">
@@ -1225,43 +1201,40 @@ svg :is([fill="white"], [fill^="#fff"]) {
       <h2 id="name-terms-definitions">
 <a href="#section-2" class="section-number selfRef">2. </a><a href="#name-terms-definitions" class="section-name selfRef">Terms &amp; Definitions</a>
       </h2>
-<p id="section-2-1">This specification uses the terms "Consumer", "Data Holder", "Data Recipient", "Personally Identifiable Information (PII)",
-"Pairwise Pseudonymous Identifier (PPID)", "Software Product"  as defined by <span>[<a href="#CDRPLUS-INFOSEC-BASELINE" class="cite xref">CDRPLUS-INFOSEC-BASELINE</a>]</span>.<a href="#section-2-1" class="pilcrow">¶</a></p>
-<p id="section-2-2">CDR Sharing Arrangement
-CDR Sharing Arrangement Identifier
-Once Off Authorisation<a href="#section-2-2" class="pilcrow">¶</a></p>
+<p id="section-2-1">This specification uses the terms "Consumer", "Provider", "Initiator", "Personally Identifiable Information (PII)",
+"Pairwise Pseudonymous Identifier (PPID)", "Initiator", "CDR Sharing Arrangement" and "CDR Sharing Arrangement Identifier"  as defined by <span>[<a href="#DATARIGHTPLUS-ROSETTA" class="cite xref">DATARIGHTPLUS-ROSETTA</a>]</span>.<a href="#section-2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="data-holder">
+<div id="provider">
 <section id="section-3">
-      <h2 id="name-data-holder">
-<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-data-holder" class="section-name selfRef">Data Holder</a>
+      <h2 id="name-provider">
+<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-provider" class="section-name selfRef">Provider</a>
       </h2>
-<p id="section-3-1">The following provisions apply to participants considered a Data Holder.<a href="#section-3-1" class="pilcrow">¶</a></p>
+<p id="section-3-1">The following provisions apply to services delivered by Providers.<a href="#section-3-1" class="pilcrow">¶</a></p>
 <div id="authorisation-server">
 <section id="section-3.1">
         <h3 id="name-authorisation-server">
 <a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-authorisation-server" class="section-name selfRef">Authorisation Server</a>
         </h3>
-<p id="section-3.1-1">The authorisation server:<a href="#section-3.1-1" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="normal type-1" id="section-3.1-2">
+<p id="section-3.1-1">In addition to the provisions outlined in <span>[<a href="#DATARIGHTPLUS-INFOSEC-BASELINE" class="cite xref">DATARIGHTPLUS-INFOSEC-BASELINE</a>]</span> the authorisation server:<a href="#section-3.1-1" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="compact type-1" id="section-3.1-2">
 <li id="section-3.1-2.1">
-            <span class="bcp14">SHALL</span> issue access tokens in alignment with <span>[<a href="#CDRPLUS-INFOSEC-BASELINE" class="cite xref">CDRPLUS-INFOSEC-BASELINE</a>]</span> and on successful completion of an authorisation flow<a href="#section-3.1-2.1" class="pilcrow">¶</a>
+            <span class="bcp14">SHALL NOT</span> issue a refresh token unless the duration of the CDR Arrangement is greater than <code>0</code> (see [Request Object])<a href="#section-3.1-2.1" class="pilcrow">¶</a>
 </li>
           <li id="section-3.1-2.2">
-            <span class="bcp14">SHALL</span> issue refresh tokens with an expiry matched to the CDR Arrangement;<a href="#section-3.1-2.2" class="pilcrow">¶</a>
+            <span class="bcp14">SHALL</span>, where the supplied <code>cdr_arrangement_id</code>, if provided, does not match the authenticated Consumer and as soon as practicable, return an OAuth2 Error<a href="#section-3.1-2.2" class="pilcrow">¶</a>
 </li>
           <li id="section-3.1-2.3">
-            <span class="bcp14">SHOULD NOT</span> issue refresh tokens which which a <code>sharing_duration</code> was not provided or was provided with a value of <code>0</code> (see Request Object)<a href="#section-3.1-2.3" class="pilcrow">¶</a>
+            <span class="bcp14">SHALL</span> modify the existing authorisation grant referenced by the <code>cdr_arrangement_id</code>, if provided, while maintaining the <code>cdr_arrangement_id</code> between such authorisations<a href="#section-3.1-2.3" class="pilcrow">¶</a>
 </li>
           <li id="section-3.1-2.4">
-            <span class="bcp14">MUST</span> support the Holder CDR Arrangement Revocation Endpoint (HCARE)<a href="#section-3.1-2.4" class="pilcrow">¶</a>
+            <span class="bcp14">SHALL</span> revoke previously issued Access and refresh tokens when modifying existing authorisation grants;<a href="#section-3.1-2.4" class="pilcrow">¶</a>
 </li>
           <li id="section-3.1-2.5">
-            <span class="bcp14">MUST</span> include the CDR Arrangement ID as an attribute in its Introspection Endpoint response<a href="#section-3.1-2.5" class="pilcrow">¶</a>
+            <span class="bcp14">SHALL</span> support the Provider CDR Arrangement Revocation Endpoint (PCARE);<a href="#section-3.1-2.5" class="pilcrow">¶</a>
 </li>
           <li id="section-3.1-2.6">
-            <span class="bcp14">MUST</span> support the <span>[<a href="#OIDC-Core" class="cite xref">OIDC-Core</a>]</span> <code>acr</code> claim<a href="#section-3.1-2.6" class="pilcrow">¶</a>
+            <span class="bcp14">SHALL</span> publish the url for the [Provider CDR Arrangement Revocation Endpoint (PCARE)] as an attribute named <code>cdr_arrangement_revocation_endpoint</code> within the OpenID Connect Discovery 1.0 <span>[<a href="#OIDC-Discovery" class="cite xref">OIDC-Discovery</a>]</span> endpoint response;<a href="#section-3.1-2.6" class="pilcrow">¶</a>
 </li>
         </ol>
 <div id="request-object">
@@ -1270,27 +1243,15 @@ Once Off Authorisation<a href="#section-2-2" class="pilcrow">¶</a></p>
 <a href="#section-3.1.1" class="section-number selfRef">3.1.1. </a><a href="#name-request-object" class="section-name selfRef">Request Object</a>
           </h4>
 <p id="section-3.1.1-1">The request object submitted to the authorisation server:<a href="#section-3.1.1-1" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="normal type-1" id="section-3.1.1-2">
+<ol start="1" type="1" class="compact type-1" id="section-3.1.1-2">
 <li id="section-3.1.1-2.1">
-              <span class="bcp14">MUST</span> support a claim parameter of <code>sharing_duration</code> representing the number of seconds, as an integer, to request a CDR Sharing Arrangement;<a href="#section-3.1.1-2.1" class="pilcrow">¶</a>
+              <span class="bcp14">SHALL</span> support an optional integer parameter of <code>sharing_duration</code> representing the number of seconds requested for data sharing. The default value of this parameter <span class="bcp14">SHALL</span> be <code>0</code> and the maximum value <span class="bcp14">SHALL NOT</span> exceed <code>31536000</code>.<a href="#section-3.1.1-2.1" class="pilcrow">¶</a>
 </li>
             <li id="section-3.1.1-2.2">
-              <span class="bcp14">MUST</span> consider <code>sharing_duration</code> lengths exceeding <code>31536000</code> to be equal to <code>31536000</code>;<a href="#section-3.1.1-2.2" class="pilcrow">¶</a>
+              <span class="bcp14">SHALL</span> support an optional string parameter <code>cdr_arrangement_id</code> referencing an existing CDR Arrangement (see CDR Sharing Arrangement Identifier);<a href="#section-3.1.1-2.2" class="pilcrow">¶</a>
 </li>
             <li id="section-3.1.1-2.3">
-              <span class="bcp14">MUST</span> treat a <code>sharing_duration</code> of <code>0</code> as a Once Off Authorisation;<a href="#section-3.1.1-2.3" class="pilcrow">¶</a>
-</li>
-            <li id="section-3.1.1-2.4">
-              <span class="bcp14">MUST</span> treat a missing <code>sharing_duration</code> as a Once Off Authorisation;<a href="#section-3.1.1-2.4" class="pilcrow">¶</a>
-</li>
-            <li id="section-3.1.1-2.5">
-              <span class="bcp14">SHOULD</span> reject <code>sharing_duration</code> values less than <code>0</code>;<a href="#section-3.1.1-2.5" class="pilcrow">¶</a>
-</li>
-            <li id="section-3.1.1-2.6">
-              <span class="bcp14">MUST</span> support a claim parameter of <code>cdr_arrangement_id</code> referencing an existing CDR Arrangement (see CDR Arrangement Identifier);<a href="#section-3.1.1-2.6" class="pilcrow">¶</a>
-</li>
-            <li id="section-3.1.1-2.7">
-              <span class="bcp14">MUST</span> reject requests containing an unknown <code>cdr_arrangement_id</code>;<a href="#section-3.1.1-2.7" class="pilcrow">¶</a>
+              <span class="bcp14">SHALL</span> reject requests containing a <code>cdr_arrangement_id</code> parameter that is unknown, expired or not associated with the requesting Initiator<a href="#section-3.1.1-2.3" class="pilcrow">¶</a>
 </li>
           </ol>
 </section>
@@ -1301,141 +1262,96 @@ Once Off Authorisation<a href="#section-2-2" class="pilcrow">¶</a></p>
 <a href="#section-3.1.2" class="section-number selfRef">3.1.2. </a><a href="#name-claims" class="section-name selfRef">Claims</a>
           </h4>
 <p id="section-3.1.2-1">The authorisation server:<a href="#section-3.1.2-1" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="normal type-1" id="section-3.1.2-2">
+<ol start="1" type="1" class="compact type-1" id="section-3.1.2-2">
 <li id="section-3.1.2-2.1">
-              <span class="bcp14">MUST</span> support the claim <code>refresh_token_expires_at</code> representing the expiry of the refresh token as a numeric epoch. If no refresh token has been provided a <code>0</code> <span class="bcp14">SHOULD</span> be returned;<a href="#section-3.1.2-2.1" class="pilcrow">¶</a>
+              <p id="section-3.1.2-2.1.1"><span class="bcp14">SHALL</span> include within the Introspection Endpoint response:<a href="#section-3.1.2-2.1.1" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="compact type-1" id="section-3.1.2-2.1.2">
+<li id="section-3.1.2-2.1.2.1">the <code>exp</code> claim, with a value equal to the expiry time of the underlying CDR Arrangement and;<a href="#section-3.1.2-2.1.2.1" class="pilcrow">¶</a>
+</li>
+                <li id="section-3.1.2-2.1.2.2">the <code>cdr_arrangement_id</code> claim, containing the assigned [CDR Sharing Arrangement Identifier]<a href="#section-3.1.2-2.1.2.2" class="pilcrow">¶</a>
+</li>
+              </ol>
 </li>
             <li id="section-3.1.2-2.2">
-              <span class="bcp14">MUST</span> support the claim <code>sharing_expires_at</code> representing the expiry of the CDR Arrangement. If a <code>sharing_duration</code> was not specified in the authorisation request object then a <code>0</code> <span class="bcp14">SHOULD</span> be returned;<a href="#section-3.1.2-2.2" class="pilcrow">¶</a>
-</li>
-            <li id="section-3.1.2-2.3">
-              <span class="bcp14">SHOULD</span> ensure the <code>exp</code> claim within refresh tokens is equal to the <code>sharing_expires_at</code> claim;<a href="#section-3.1.2-2.3" class="pilcrow">¶</a>
-</li>
-            <li id="section-3.1.2-2.4">
-              <span class="bcp14">MUST</span> support the claim <code>cdr_arrangement_id</code> representing a unique identifier for the CDR Arrangement;<a href="#section-3.1.2-2.4" class="pilcrow">¶</a>
-</li>
-            <li id="section-3.1.2-2.5">
-              <span class="bcp14">MUST</span> ensure the <code>cdr_arrangement_id</code> is non-guessable;<a href="#section-3.1.2-2.5" class="pilcrow">¶</a>
-</li>
-            <li id="section-3.1.2-2.6">
-              <span class="bcp14">MUST</span> ensure the <code>cdr_arrangement_id</code> does not identify the Consumer;<a href="#section-3.1.2-2.6" class="pilcrow">¶</a>
-</li>
-            <li id="section-3.1.2-2.7">
-              <span class="bcp14">SHOULD</span> ensure the <code>cdr_arrangement_id</code> is collision resistant;<a href="#section-3.1.2-2.7" class="pilcrow">¶</a>
-</li>
-            <li id="section-3.1.2-2.8">
-              <span class="bcp14">MUST</span> ensure the <code>cdr_arrangement_id</code> claim, if specified within the request object and valid, remains static across authorisation flows;<a href="#section-3.1.2-2.8" class="pilcrow">¶</a>
-</li>
-            <li id="section-3.1.2-2.9">
-              <span class="bcp14">MUST</span> reject requests referencing a CDR Arrangement which has expired;<a href="#section-3.1.2-2.9" class="pilcrow">¶</a>
-</li>
-            <li id="section-3.1.2-2.10">
-              <span class="bcp14">MUST</span> reject requests referencing a CDR Arrangement that does not match the authenticated Consumer;<a href="#section-3.1.2-2.10" class="pilcrow">¶</a>
-</li>
-            <li id="section-3.1.2-2.11">
-              <span class="bcp14">MUST</span> revoke previously issued access and refresh tokens when a CDR Arrangement is updated<a href="#section-3.1.2-2.11" class="pilcrow">¶</a>
-</li>
-          </ol>
-<div id="token-related-claims">
-<section id="section-3.1.2.1">
-            <h5 id="name-token-related-claims">
-<a href="#section-3.1.2.1" class="section-number selfRef">3.1.2.1. </a><a href="#name-token-related-claims" class="section-name selfRef">Token Related Claims</a>
-            </h5>
-<p id="section-3.1.2.1-1">Within the responses at the Token Endpoint and the Token Introspection Endpoint the authorisation server:<a href="#section-3.1.2.1-1" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="normal type-1" id="section-3.1.2.1-2">
-<li id="section-3.1.2.1-2.1">
-                <span class="bcp14">SHALL</span> include the CDR Arrangement Identifier within the <code>cdr_arrangement_id</code> claim<a href="#section-3.1.2.1-2.1" class="pilcrow">¶</a>
-</li>
-            </ol>
-</section>
-</div>
-</section>
-</div>
-<div id="amending-authorisation">
-<section id="section-3.1.3">
-          <h4 id="name-amending-authorisation">
-<a href="#section-3.1.3" class="section-number selfRef">3.1.3. </a><a href="#name-amending-authorisation" class="section-name selfRef">Amending Authorisation</a>
-          </h4>
-<ol start="1" type="1" class="normal type-1" id="section-3.1.3-1">
-<li id="section-3.1.3-1.1">
-              <span class="bcp14">MUST</span> trigger an amendment authorisation flow if a <code>cdr_arrangement_id</code> is provided<a href="#section-3.1.3-1.1" class="pilcrow">¶</a>
+              <span class="bcp14">SHALL</span> ensure the <code>cdr_arrangement_id</code> claim is persistent and does not change between token interactions;<a href="#section-3.1.2-2.2" class="pilcrow">¶</a>
 </li>
           </ol>
 </section>
 </div>
 </section>
 </div>
-<div id="holder-cdr-arrangement-revocation-endpoint-hcare">
+<div id="provider-cdr-arrangement-revocation-endpoint-pcare">
 <section id="section-3.2">
-        <h3 id="name-holder-cdr-arrangement-revo">
-<a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-holder-cdr-arrangement-revo" class="section-name selfRef">Holder CDR Arrangement Revocation Endpoint (HCARE)</a>
+        <h3 id="name-provider-cdr-arrangement-re">
+<a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-provider-cdr-arrangement-re" class="section-name selfRef">Provider CDR Arrangement Revocation Endpoint (PCARE)</a>
         </h3>
-<p id="section-3.2-1">The Holder CDR Arrangement (HCARE) Revocation endpoint accepts a CDR Arrangement Identifier and immediately revokes the CDR Sharing Arrangement.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
-<div id="hcare-discovery">
+<p id="section-3.2-1">The Provider CDR Arrangement (PCARE) Revocation endpoint accepts a CDR Sharing Arrangement Identifier and immediately revokes the CDR Sharing Arrangement.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
+<div id="pcare-discovery">
 <section id="section-3.2.1">
-          <h4 id="name-hcare-discovery">
-<a href="#section-3.2.1" class="section-number selfRef">3.2.1. </a><a href="#name-hcare-discovery" class="section-name selfRef">HCARE Discovery</a>
+          <h4 id="name-pcare-discovery">
+<a href="#section-3.2.1" class="section-number selfRef">3.2.1. </a><a href="#name-pcare-discovery" class="section-name selfRef">PCARE Discovery</a>
           </h4>
-<p id="section-3.2.1-1">The HCARE endpoint <span class="bcp14">MUST</span> be advertised using the <code>cdr_arrangement_revocation_endpoint</code> attribute at the OpenID Connect Discovery 1.0 <span>[<a href="#OIDC-Discovery" class="cite xref">OIDC-Discovery</a>]</span> endpoint.<a href="#section-3.2.1-1" class="pilcrow">¶</a></p>
+<p id="section-3.2.1-1">The PCARE endpoint <span class="bcp14">SHALL</span> be advertised using the <code>cdr_arrangement_revocation_endpoint</code> attribute at the OpenID Connect Discovery 1.0 <span>[<a href="#OIDC-Discovery" class="cite xref">OIDC-Discovery</a>]</span> endpoint.<a href="#section-3.2.1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="hcare-request">
+<div id="pcare-request">
 <section id="section-3.2.2">
-          <h4 id="name-hcare-request">
-<a href="#section-3.2.2" class="section-number selfRef">3.2.2. </a><a href="#name-hcare-request" class="section-name selfRef">HCARE Request</a>
+          <h4 id="name-pcare-request">
+<a href="#section-3.2.2" class="section-number selfRef">3.2.2. </a><a href="#name-pcare-request" class="section-name selfRef">PCARE Request</a>
           </h4>
-<p id="section-3.2.2-1">The HCARE endpoint receives requests using the HTTP POST <span>[<a href="#RFC7231" class="cite xref">RFC7231</a>]</span> method with parameters sent as <code>application/x-www-form-urlencoded</code> data as defined in <span>[<a href="#W3C.REC-html5-20141028" class="cite xref">W3C.REC-html5-20141028</a>]</span>.<a href="#section-3.2.2-1" class="pilcrow">¶</a></p>
-<p id="section-3.2.2-2">In addition to authentication credentials described in Section 2.2 of <span>[<a href="#RFC7523" class="cite xref">RFC7523</a>]</span> the endpoint includes the CDR Arrangement Identifier as an additional parameter, specified as follows:<a href="#section-3.2.2-2" class="pilcrow">¶</a></p>
-<ul class="normal">
-<li class="normal" id="section-3.2.2-3.1">
-              <code>cdr_arrangement_id</code>: <span class="bcp14">REQUIRED</span>  The CDR Arrangement Identifier previously provided in the token and introspection endpoint responses.<a href="#section-3.2.2-3.1" class="pilcrow">¶</a>
+<p id="section-3.2.2-1">The PCARE endpoint receives requests using the HTTP POST <span>[<a href="#RFC7231" class="cite xref">RFC7231</a>]</span> method with parameters sent as <code>application/x-www-form-urlencoded</code> data as defined in <span>[<a href="#W3C.REC-html5-20141028" class="cite xref">W3C.REC-html5-20141028</a>]</span>.<a href="#section-3.2.2-1" class="pilcrow">¶</a></p>
+<p id="section-3.2.2-2">In addition to authentication credentials described in Section 2.2 of <span>[<a href="#RFC7523" class="cite xref">RFC7523</a>]</span> the endpoint includes the CDR Sharing Arrangement Identifier as an additional parameter, specified as follows:<a href="#section-3.2.2-2" class="pilcrow">¶</a></p>
+<ul class="compact">
+<li class="compact" id="section-3.2.2-3.1">
+              <code>cdr_arrangement_id</code>: <span class="bcp14">REQUIRED</span>  The CDR Sharing Arrangement Identifier previously provided in the token and introspection endpoint responses.<a href="#section-3.2.2-3.1" class="pilcrow">¶</a>
 </li>
           </ul>
-<p id="section-3.2.2-4">An example request to the Holder CDR Arrangement Revocation Endpoint is as follows:<a href="#section-3.2.2-4" class="pilcrow">¶</a></p>
+<p id="section-3.2.2-4">An example request to the Provider CDR Arrangement Revocation Endpoint is as follows:<a href="#section-3.2.2-4" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="section-3.2.2-5">
-<pre>POST https://data.holder.com.au/arrangements/revoke
+<pre>POST https://data.provider.com.au/arrangements/revoke
 HTTP/1.1
-Host: data.holder.com.au
+Host: data.Provider.com.au
 Content-Type: application/x-www-form-urlencoded
 
 client_id=s6BhdRkqt3&amp;
 client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&amp;
 client_assertion=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey ...&amp;
 cdr_arrangement_id=5a1bf696-ee03-408b-b315-97955415d1f0
+
 </pre><a href="#section-3.2.2-5" class="pilcrow">¶</a>
 </div>
-<p id="section-3.2.2-6">The authorisation server:<a href="#section-3.2.2-6" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="normal type-1" id="section-3.2.2-7">
+<p id="section-3.2.2-6">On receipt of a valid request the Provider authorisation server:<a href="#section-3.2.2-6" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="compact type-1" id="section-3.2.2-7">
 <li id="section-3.2.2-7.1">
-              <span class="bcp14">MUST</span> validate the client credentials as per Section X.X of OAuth2 Client Auth (ref?!) and;<a href="#section-3.2.2-7.1" class="pilcrow">¶</a>
+              <span class="bcp14">SHALL</span> validate the client credentials as per Section 2.2 of <span>[<a href="#RFC7523" class="cite xref">RFC7523</a>]</span> and;<a href="#section-3.2.2-7.1" class="pilcrow">¶</a>
 </li>
             <li id="section-3.2.2-7.2">
-              <span class="bcp14">MUST</span> validate the <code>cdr_arrangement_id</code> relates to a valid CDR Sharing Arrangement and;<a href="#section-3.2.2-7.2" class="pilcrow">¶</a>
+              <span class="bcp14">SHALL</span> validate the <code>cdr_arrangement_id</code> relates to a valid CDR Sharing Arrangement and;<a href="#section-3.2.2-7.2" class="pilcrow">¶</a>
 </li>
             <li id="section-3.2.2-7.3">
-              <span class="bcp14">MUST</span> verify the CDR Sharing Arrangement referenced by specified <code>cdr_arrangement_id</code> belongs to validated client<a href="#section-3.2.2-7.3" class="pilcrow">¶</a>
+              <span class="bcp14">SHALL</span> verify the CDR Sharing Arrangement referenced by specified <code>cdr_arrangement_id</code> belongs to validated client<a href="#section-3.2.2-7.3" class="pilcrow">¶</a>
 </li>
             <li id="section-3.2.2-7.4">
               <p id="section-3.2.2-7.4.1">If all of the above conditions are met the authorisation server:<a href="#section-3.2.2-7.4.1" class="pilcrow">¶</a></p>
-<ul class="normal">
-<li class="normal" id="section-3.2.2-7.4.2.1">
-                  <span class="bcp14">MUST</span> immediately invalidate the CDR Arrangement<a href="#section-3.2.2-7.4.2.1" class="pilcrow">¶</a>
+<ul class="compact">
+<li class="compact" id="section-3.2.2-7.4.2.1">
+                  <span class="bcp14">SHALL</span> immediately invalidate the CDR Arrangement<a href="#section-3.2.2-7.4.2.1" class="pilcrow">¶</a>
 </li>
-                <li class="normal" id="section-3.2.2-7.4.2.2">
-                  <span class="bcp14">MUST</span> immediately invalidate all Refresh Tokens associated with the CDR Arrangement<a href="#section-3.2.2-7.4.2.2" class="pilcrow">¶</a>
+                <li class="compact" id="section-3.2.2-7.4.2.2">
+                  <span class="bcp14">SHALL</span> immediately invalidate all refresh tokens associated with the CDR Arrangement<a href="#section-3.2.2-7.4.2.2" class="pilcrow">¶</a>
 </li>
-                <li class="normal" id="section-3.2.2-7.4.2.3">
-                  <span class="bcp14">MUST</span> immediately invalid all Access Tokens associated with the CDR Arrangement<a href="#section-3.2.2-7.4.2.3" class="pilcrow">¶</a>
+                <li class="compact" id="section-3.2.2-7.4.2.3">
+                  <span class="bcp14">SHALL</span> immediately invalid all access tokens associated with the CDR Arrangement<a href="#section-3.2.2-7.4.2.3" class="pilcrow">¶</a>
 </li>
               </ul>
 </li>
           </ol>
 </section>
 </div>
-<div id="hcare-response">
+<div id="pcare-response">
 <section id="section-3.2.3">
-          <h4 id="name-hcare-response">
-<a href="#section-3.2.3" class="section-number selfRef">3.2.3. </a><a href="#name-hcare-response" class="section-name selfRef">HCARE Response</a>
+          <h4 id="name-pcare-response">
+<a href="#section-3.2.3" class="section-number selfRef">3.2.3. </a><a href="#name-pcare-response" class="section-name selfRef">PCARE Response</a>
           </h4>
 <div id="successful-response">
 <section id="section-3.2.3.1">
@@ -1443,8 +1359,8 @@ cdr_arrangement_id=5a1bf696-ee03-408b-b315-97955415d1f0
 <a href="#section-3.2.3.1" class="section-number selfRef">3.2.3.1. </a><a href="#name-successful-response" class="section-name selfRef">Successful Response</a>
             </h5>
 <p id="section-3.2.3.1-1">In the event of a successful revocation, the authorisation server:<a href="#section-3.2.3.1-1" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="normal type-1" id="section-3.2.3.1-2">
-<li id="section-3.2.3.1-2.1">If the CDR Sharing Arrangement is revoked, <span class="bcp14">MUST</span> respond with a 204 HTTP status code containing no content<a href="#section-3.2.3.1-2.1" class="pilcrow">¶</a>
+<ol start="1" type="1" class="compact type-1" id="section-3.2.3.1-2">
+<li id="section-3.2.3.1-2.1">If the CDR Sharing Arrangement is revoked, <span class="bcp14">SHALL</span> respond with a 204 HTTP status code containing no content<a href="#section-3.2.3.1-2.1" class="pilcrow">¶</a>
 </li>
               <li id="section-3.2.3.1-2.2">If the CDR Sharing Arrangement was already revoked prior to the request being received, <span class="bcp14">SHOULD</span> respond with a 204 HTTP status code containing no content<a href="#section-3.2.3.1-2.2" class="pilcrow">¶</a>
 </li>
@@ -1457,35 +1373,44 @@ cdr_arrangement_id=5a1bf696-ee03-408b-b315-97955415d1f0
 <a href="#section-3.2.3.2" class="section-number selfRef">3.2.3.2. </a><a href="#name-failure-response" class="section-name selfRef">Failure Response</a>
             </h5>
 <p id="section-3.2.3.2-1">In the event of a failure to validate the CDR Arrangement conditions the authorisation server:<a href="#section-3.2.3.2-1" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="normal type-1" id="section-3.2.3.2-2">
+<ol start="1" type="1" class="compact type-1" id="section-3.2.3.2-2">
 <li id="section-3.2.3.2-2.1">
-                <span class="bcp14">MUST</span> respond with a ### HTTP Status Code containing a JSON payload as per Section X.X of <span>[<a href="#CDRPLUS-ERROR-CODES-BASELINE" class="cite xref">CDRPLUS-ERROR-CODES-BASELINE</a>]</span><a href="#section-3.2.3.2-2.1" class="pilcrow">¶</a>
+                <span class="bcp14">SHALL</span> respond with a  422 Unprocessable Entity response containing a JSON payload structured as as described below and;<a href="#section-3.2.3.2-2.1" class="pilcrow">¶</a>
 </li>
               <li id="section-3.2.3.2-2.2">
-                <span class="bcp14">SHOULD</span> respond with a 503 HTTP Status Code if currently unavailable and <span class="bcp14">MAY</span> supply a <code>Retry-After</code> indicating the earliest retry time<a href="#section-3.2.3.2-2.2" class="pilcrow">¶</a>
+                <span class="bcp14">SHOULD</span> respond with a 503 Service Unavailable if currently unavailable and <span class="bcp14">MAY</span> supply a <code>Retry-After</code> indicating the earliest retry time<a href="#section-3.2.3.2-2.2" class="pilcrow">¶</a>
 </li>
             </ol>
-<p id="section-3.2.3.2-3">The following additional error code is defined for the HCARE endpoint:<a href="#section-3.2.3.2-3" class="pilcrow">¶</a></p>
-<table class="center" id="table-1">
-              <caption><a href="#table-1" class="selfRef">Table 1</a></caption>
-<thead>
-                <tr>
-                  <th class="text-left" rowspan="1" colspan="1">Code</th>
-                  <th class="text-left" rowspan="1" colspan="1">Description</th>
-                  <th class="text-left" rowspan="1" colspan="1">Error Detail</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="text-left" rowspan="1" colspan="1">
-                    <code>urn:au-cds:error:cds-all:Authorisation/InvalidArrangement</code>
-</td>
-                  <td class="text-left" rowspan="1" colspan="1">The arrangement could not be found.</td>
-                  <td class="text-left" rowspan="1" colspan="1">The provided <code>cdr_arrangement_id</code> value</td>
-                </tr>
-              </tbody>
-            </table>
-</section>
+<div id="failure-response-body">
+<section id="section-3.2.3.2.1">
+              <h6 id="name-failure-response-body">
+<a href="#section-3.2.3.2.1" class="section-number selfRef">3.2.3.2.1. </a><a href="#name-failure-response-body" class="section-name selfRef">Failure Response Body</a>
+              </h6>
+<p id="section-3.2.3.2.1-1">The failure response body is an object with a single attribute of <code>errors</code> containing an array of one object with the following fields:<a href="#section-3.2.3.2.1-1" class="pilcrow">¶</a></p>
+<ul class="compact">
+<li class="compact" id="section-3.2.3.2.1-2.1">
+                  <code>code</code> with the value of <code>urn:au-cds:error:cds-all:Authorisation/InvalidArrangement</code><a href="#section-3.2.3.2.1-2.1" class="pilcrow">¶</a>
+</li>
+                <li class="compact" id="section-3.2.3.2.1-2.2">
+                  <code>title</code> with the value of <code>The arrangement could not be found.</code><a href="#section-3.2.3.2.1-2.2" class="pilcrow">¶</a>
+</li>
+                <li class="compact" id="section-3.2.3.2.1-2.3">
+                  <code>detail</code> with a value containing the provided <code>cdr_arrangement_id</code><a href="#section-3.2.3.2.1-2.3" class="pilcrow">¶</a>
+</li>
+              </ul>
+<p id="section-3.2.3.2.1-3">A non-normative example of the payload is provided below:<a href="#section-3.2.3.2.1-3" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-3.2.3.2.1-4">
+<pre>{
+    "errors": [
+        {
+            "code": "urn:au-cds:error:cds-all:Authorisation/InvalidArrangement",
+            "title": "The arrangement could not be found.",
+            "detail": "b3f0c9d0-457d-4578-b0cd-52e443ae13c5"
+        }
+    ]
+}
+
+</pre><a href="#section-3.2.3.2.1-4" class="pilcrow">¶</a>
 </div>
 </section>
 </div>
@@ -1493,66 +1418,73 @@ cdr_arrangement_id=5a1bf696-ee03-408b-b315-97955415d1f0
 </div>
 </section>
 </div>
-<div id="software-product">
+</section>
+</div>
+</section>
+</div>
+<div id="initiator">
 <section id="section-4">
-      <h2 id="name-software-product">
-<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-software-product" class="section-name selfRef">Software Product</a>
+      <h2 id="name-initiator">
+<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-initiator" class="section-name selfRef">Initiator</a>
       </h2>
-<p id="section-4-1">The following provisions apply to participants operating individual Software Products.<a href="#section-4-1" class="pilcrow">¶</a></p>
+<p id="section-4-1">The following provisions apply to participants operating individual Initiators.<a href="#section-4-1" class="pilcrow">¶</a></p>
 <div id="authorisation-client">
 <section id="section-4.1">
         <h3 id="name-authorisation-client">
 <a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-authorisation-client" class="section-name selfRef">Authorisation Client</a>
         </h3>
-<p id="section-4.1-1">A Software Product which operates as an authorisation client:<a href="#section-4.1-1" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="normal type-1" id="section-4.1-2">
+<p id="section-4.1-1">An Initiators authorisation client:<a href="#section-4.1-1" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="compact type-1" id="section-4.1-2">
 <li id="section-4.1-2.1">
-            <span class="bcp14">SHALL</span> supported the provisions specified in Section X of <span>[<a href="#CDRPLUS-INFOSEC-BASELINE" class="cite xref">CDRPLUS-INFOSEC-BASELINE</a>]</span><a href="#section-4.1-2.1" class="pilcrow">¶</a>
+            <span class="bcp14">SHALL</span> support the provisions specified in Section 4 of <span>[<a href="#DATARIGHTPLUS-INFOSEC-BASELINE" class="cite xref">DATARIGHTPLUS-INFOSEC-BASELINE</a>]</span><a href="#section-4.1-2.1" class="pilcrow">¶</a>
 </li>
           <li id="section-4.1-2.2">
-            <span class="bcp14">MUST</span> call the HCARE when requested by a Consumer<a href="#section-4.1-2.2" class="pilcrow">¶</a>
+            <span class="bcp14">SHALL</span> support the submission of Request Object parameters outlined in [Request Object]<a href="#section-4.1-2.2" class="pilcrow">¶</a>
 </li>
           <li id="section-4.1-2.3">
-            <span class="bcp14">MUST</span> call the HCARE after successful collection if operating on a Once Off Authorisation and a Refresh Token was supplied by the Holder<a href="#section-4.1-2.3" class="pilcrow">¶</a>
+            <p id="section-4.1-2.3.1"><span class="bcp14">SHALL</span> call the [Provider CDR Arrangement Revocation Endpoint (PCARE)] following;<a href="#section-4.1-2.3.1" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="compact type-1" id="section-4.1-2.3.2">
+<li id="section-4.1-2.3.2.1">revocation request is requested by the Consumer using the Initiator Consumer Dashboard or;<a href="#section-4.1-2.3.2.1" class="pilcrow">¶</a>
+</li>
+              <li id="section-4.1-2.3.2.2">where a refresh token has not been issued, as soon as practicable following the completion of data collection<a href="#section-4.1-2.3.2.2" class="pilcrow">¶</a>
+</li>
+            </ol>
 </li>
           <li id="section-4.1-2.4">
-            <span class="bcp14">MAY</span> during Request Object creation provide the <code>cdr_arrangement_id</code> of an existing arrangement<a href="#section-4.1-2.4" class="pilcrow">¶</a>
+            <span class="bcp14">SHALL</span> support the [Initiator CDR Arrangement Revocation Endpoint (ICARE)]<a href="#section-4.1-2.4" class="pilcrow">¶</a>
 </li>
           <li id="section-4.1-2.5">
-            <span class="bcp14">MUST</span> support the Recipient CDR Arrangement Revocation Endpoint (RCARE)<a href="#section-4.1-2.5" class="pilcrow">¶</a>
-</li>
-          <li id="section-4.1-2.6">
-            <span class="bcp14">MUST</span> retry requests to the HCARE where the response received was a HTTP Status 503. The retry time <span class="bcp14">SHOULD</span> be informed by the presence of the <code>Retry-After</code> header.<a href="#section-4.1-2.6" class="pilcrow">¶</a>
+            <span class="bcp14">SHALL</span> retry requests to the [Provider CDR Arrangement Revocation Endpoint (PCARE)] where the response received was a HTTP Status 503. The retry time <span class="bcp14">SHOULD</span> be informed by the presence of the <code>Retry-After</code> header.<a href="#section-4.1-2.5" class="pilcrow">¶</a>
 </li>
         </ol>
 </section>
 </div>
-<div id="recipient-cdr-arrangement-revocation-endpoint-rcare">
+<div id="initiator-cdr-arrangement-revocation-endpoint-icare">
 <section id="section-4.2">
-        <h3 id="name-recipient-cdr-arrangement-r">
-<a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-recipient-cdr-arrangement-r" class="section-name selfRef">Recipient CDR Arrangement Revocation Endpoint (RCARE)</a>
+        <h3 id="name-initiator-cdr-arrangement-r">
+<a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-initiator-cdr-arrangement-r" class="section-name selfRef">Initiator CDR Arrangement Revocation Endpoint (ICARE)</a>
         </h3>
-<p id="section-4.2-1">The Recipient CDR Arrangement (RCARE) Revocation endpoint is a CDR specific endpoint that accepts a CDR Arrangement Identifier and immediately revokes the CDR Sharing Arrangement.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
-<div id="rcare-request">
+<p id="section-4.2-1">The Initiator CDR Arrangement (ICARE) Revocation endpoint accepts a CDR Sharing Arrangement Identifier and immediately revokes the CDR Sharing Arrangement.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
+<div id="icare-request">
 <section id="section-4.2.1">
-          <h4 id="name-rcare-request">
-<a href="#section-4.2.1" class="section-number selfRef">4.2.1. </a><a href="#name-rcare-request" class="section-name selfRef">RCARE Request</a>
+          <h4 id="name-icare-request">
+<a href="#section-4.2.1" class="section-number selfRef">4.2.1. </a><a href="#name-icare-request" class="section-name selfRef">ICARE Request</a>
           </h4>
-<p id="section-4.2.1-1">The protected resource calls the RCARE endpoint using an HTTP POST <span>[<a href="#RFC7231" class="cite xref">RFC7231</a>]</span> request with parameters sent as <code>application/x-www-form-urlencoded</code> data as defined in <span>[<a href="#W3C.REC-html5-20141028" class="cite xref">W3C.REC-html5-20141028</a>]</span>.<a href="#section-4.2.1-1" class="pilcrow">¶</a></p>
+<p id="section-4.2.1-1">The protected resource calls the ICARE endpoint using an HTTP POST <span>[<a href="#RFC7231" class="cite xref">RFC7231</a>]</span> request with parameters sent as <code>application/x-www-form-urlencoded</code> data as defined in <span>[<a href="#W3C.REC-html5-20141028" class="cite xref">W3C.REC-html5-20141028</a>]</span>.<a href="#section-4.2.1-1" class="pilcrow">¶</a></p>
 <p id="section-4.2.1-2"><code>cdr_arrangement_jwt</code>
             <span class="bcp14">REQUIRED</span>. A single signed <span>[<a href="#JWT" class="cite xref">JWT</a>]</span> containing the following parameters:<a href="#section-4.2.1-2" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="normal type-1" id="section-4.2.1-3">
+<ol start="1" type="1" class="compact type-1" id="section-4.2.1-3">
 <li id="section-4.2.1-3.1">
-              <code>cdr_arrangement_id</code> representing the CDR Arrangement Identifier previously provided in the token and introspection endpoint responses;<a href="#section-4.2.1-3.1" class="pilcrow">¶</a>
+              <code>cdr_arrangement_id</code> representing the CDR Sharing Arrangement Identifier previously provided in the introspection endpoint responses;<a href="#section-4.2.1-3.1" class="pilcrow">¶</a>
 </li>
             <li id="section-4.2.1-3.2">
-              <code>iss</code>: The Holder Brand ID as per Section X.X in <span>[<a href="#CDRPLUS-ADMISSION-CONTROL" class="cite xref">CDRPLUS-ADMISSION-CONTROL</a>]</span><a href="#section-4.2.1-3.2" class="pilcrow">¶</a>
+              <code>iss</code>: Provider ID issued by the Ecosystem Authority<a href="#section-4.2.1-3.2" class="pilcrow">¶</a>
 </li>
             <li id="section-4.2.1-3.3">
-              <code>sub</code>: The Holder Brand ID as per Section X.X in <span>[<a href="#CDRPLUS-ADMISSION-CONTROL" class="cite xref">CDRPLUS-ADMISSION-CONTROL</a>]</span><a href="#section-4.2.1-3.3" class="pilcrow">¶</a>
+              <code>sub</code>: Provider ID issued by the Ecosystem Authority<a href="#section-4.2.1-3.3" class="pilcrow">¶</a>
 </li>
             <li id="section-4.2.1-3.4">
-              <code>aud</code>: The URI to the RCARE Endpoint as per Section X.X in <span>[<a href="#CDRPLUS-ADMISSION-CONTROL" class="cite xref">CDRPLUS-ADMISSION-CONTROL</a>]</span><a href="#section-4.2.1-3.4" class="pilcrow">¶</a>
+              <code>aud</code>: URI to the ICARE endpoint<a href="#section-4.2.1-3.4" class="pilcrow">¶</a>
 </li>
             <li id="section-4.2.1-3.5">
               <code>jti</code>: A unique identifier for the token<a href="#section-4.2.1-3.5" class="pilcrow">¶</a>
@@ -1562,15 +1494,15 @@ cdr_arrangement_id=5a1bf696-ee03-408b-b315-97955415d1f0
 </li>
           </ol>
 <p id="section-4.2.1-4">In addition, the client includes an <code>Authorization</code> header parameter with a Bearer token containing a single signed <span>[<a href="#JWT" class="cite xref">JWT</a>]</span> with the following parameters:<a href="#section-4.2.1-4" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="normal type-1" id="section-4.2.1-5">
+<ol start="1" type="1" class="compact type-1" id="section-4.2.1-5">
 <li id="section-4.2.1-5.1">
-              <code>iss</code>: The Holder Brand ID as per Section X.X in <span>[<a href="#CDRPLUS-ADMISSION-CONTROL" class="cite xref">CDRPLUS-ADMISSION-CONTROL</a>]</span><a href="#section-4.2.1-5.1" class="pilcrow">¶</a>
+              <code>iss</code>: Provider ID issued by the Ecosystem Authority<a href="#section-4.2.1-5.1" class="pilcrow">¶</a>
 </li>
             <li id="section-4.2.1-5.2">
-              <code>sub</code>: The Holder Brand ID as per Section X.X in <span>[<a href="#CDRPLUS-ADMISSION-CONTROL" class="cite xref">CDRPLUS-ADMISSION-CONTROL</a>]</span><a href="#section-4.2.1-5.2" class="pilcrow">¶</a>
+              <code>sub</code>: Provider ID issued by the Ecosystem Authority<a href="#section-4.2.1-5.2" class="pilcrow">¶</a>
 </li>
             <li id="section-4.2.1-5.3">
-              <code>aud</code>: The URI to the RCARE Endpoint as per Section X.X in <span>[<a href="#CDRPLUS-ADMISSION-CONTROL" class="cite xref">CDRPLUS-ADMISSION-CONTROL</a>]</span><a href="#section-4.2.1-5.3" class="pilcrow">¶</a>
+              <code>aud</code>: URI to the ICARE endpoint<a href="#section-4.2.1-5.3" class="pilcrow">¶</a>
 </li>
             <li id="section-4.2.1-5.4">
               <code>jti</code>: A unique identifier for the token<a href="#section-4.2.1-5.4" class="pilcrow">¶</a>
@@ -1579,121 +1511,84 @@ cdr_arrangement_id=5a1bf696-ee03-408b-b315-97955415d1f0
               <code>exp</code>: Expiration time on or after the JWT must not be accepted<a href="#section-4.2.1-5.5" class="pilcrow">¶</a>
 </li>
           </ol>
-<p id="section-4.2.1-6">For example, a Holder may request CDR Arrangement revocation with the following request:<a href="#section-4.2.1-6" class="pilcrow">¶</a></p>
+<p id="section-4.2.1-6">For example, a Provider may request CDR Arrangement revocation with the following request:<a href="#section-4.2.1-6" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="section-4.2.1-7">
-<pre>POST https://data.recipient.com.au/arrangements/revoke HTTP/1.1
-Host: data.recipient.com.au
+<pre>POST https://data.Initiator.com.au/arrangements/revoke HTTP/1.1
+Host: data.Initiator.com.au
 Content-Type: application/x-www-form-urlencoded
 Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey …
 
 cdr_arrangement_jwt=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey ...&amp;
+
 </pre><a href="#section-4.2.1-7" class="pilcrow">¶</a>
 </div>
-<p id="section-4.2.1-8">The Recipient first validates the Holder credentials and then verifies whether the CDR Arrangement Identifier exists and was issued by the Holder making the CDR Arrangement Revocation request. If this validation fails, the request is refused and the Holder is informed of the error by the RCARE endpoint as described below.<a href="#section-4.2.1-8" class="pilcrow">¶</a></p>
-<p id="section-4.2.1-9">In the next step, the Recipient invalidates the CDR Arrangement and <span class="bcp14">SHOULD</span> discard associated tokens. Data Minimisation events <span class="bcp14">SHOULD</span> also be triggered on receipt of this event.<a href="#section-4.2.1-9" class="pilcrow">¶</a></p>
+<p id="section-4.2.1-8">The Initiator first validates the Provider credentials and then verifies whether the CDR Sharing Arrangement Identifier exists and was issued by the Provider making the CDR Arrangement Revocation request. If this validation fails, the request is refused and the Provider is informed of the error by the ICARE endpoint as described below.<a href="#section-4.2.1-8" class="pilcrow">¶</a></p>
+<p id="section-4.2.1-9">In the next step, the Initiator invalidates the CDR Arrangement and <span class="bcp14">SHOULD</span> discard associated tokens. Data Minimisation events <span class="bcp14">SHOULD</span> also be triggered on receipt of this event.<a href="#section-4.2.1-9" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="rcare-response">
+<div id="icare-response">
 <section id="section-4.2.2">
-          <h4 id="name-rcare-response">
-<a href="#section-4.2.2" class="section-number selfRef">4.2.2. </a><a href="#name-rcare-response" class="section-name selfRef">RCARE Response</a>
+          <h4 id="name-icare-response">
+<a href="#section-4.2.2" class="section-number selfRef">4.2.2. </a><a href="#name-icare-response" class="section-name selfRef">ICARE Response</a>
           </h4>
-<p id="section-4.2.2-1">The HCARE endpoint receives requests using the HTTP POST <span>[<a href="#RFC7231" class="cite xref">RFC7231</a>]</span> method with parameters sent as <code>application/x-www-form-urlencoded</code> data as defined in <span>[<a href="#W3C.REC-html5-20141028" class="cite xref">W3C.REC-html5-20141028</a>]</span>.<a href="#section-4.2.2-1" class="pilcrow">¶</a></p>
-<p id="section-4.2.2-2">In addition to authentication credentials described in Section 2.2 of <span>[<a href="#RFC7523" class="cite xref">RFC7523</a>]</span> the endpoint includes the CDR Arrangement Identifier as an additional parameter, specified as follows:<a href="#section-4.2.2-2" class="pilcrow">¶</a></p>
-<ul class="normal">
-<li class="normal" id="section-4.2.2-3.1">
-              <code>cdr_arrangement_id</code>: <span class="bcp14">REQUIRED</span>  The CDR Arrangement Identifier previously provided in the token and introspection endpoint responses.<a href="#section-4.2.2-3.1" class="pilcrow">¶</a>
-</li>
-          </ul>
-<p id="section-4.2.2-4">An example request to the Holder CDR Arrangement Revocation Endpoint is as follows:<a href="#section-4.2.2-4" class="pilcrow">¶</a></p>
-<div class="alignLeft art-text artwork" id="section-4.2.2-5">
-<pre>POST https://data.holder.com.au/arrangements/revoke
-HTTP/1.1
-Host: data.holder.com.au
-Content-Type: application/x-www-form-urlencoded
-
-client_id=s6BhdRkqt3&amp;
-client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&amp;
-client_assertion=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey ...&amp;
-cdr_arrangement_id=5a1bf696-ee03-408b-b315-97955415d1f0
-</pre><a href="#section-4.2.2-5" class="pilcrow">¶</a>
-</div>
-<p id="section-4.2.2-6">The authorisation server:<a href="#section-4.2.2-6" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="normal type-1" id="section-4.2.2-7">
-<li id="section-4.2.2-7.1">
-              <span class="bcp14">MUST</span> validate the client credentials as per Section X.X of OAuth2 Client Auth (ref?!)<a href="#section-4.2.2-7.1" class="pilcrow">¶</a>
-</li>
-            <li id="section-4.2.2-7.2">
-              <span class="bcp14">MUST</span> validate the provided JWT in accordance with <span>[<a href="#JWT" class="cite xref">JWT</a>]</span><a href="#section-4.2.2-7.2" class="pilcrow">¶</a>
-</li>
-            <li id="section-4.2.2-7.3">
-              <span class="bcp14">MUST</span> validate the <code>cdr_arrangement_id</code> relates to a valid CDR Sharing Arrangement<a href="#section-4.2.2-7.3" class="pilcrow">¶</a>
-</li>
-            <li id="section-4.2.2-7.4">
-              <span class="bcp14">MUST</span> verify the CDR Sharing Arrangement referenced by specified <code>cdr_arrangement_id</code> belongs to the client validated by (1)<a href="#section-4.2.2-7.4" class="pilcrow">¶</a>
-</li>
-          </ol>
-<p id="section-4.2.2-8">If all of the above conditions are met the authorisation server:<a href="#section-4.2.2-8" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="normal type-1" id="section-4.2.2-9">
-<li id="section-4.2.2-9.1">
-              <span class="bcp14">MUST</span> immediately invalidate the CDR Arrangement<a href="#section-4.2.2-9.1" class="pilcrow">¶</a>
-</li>
-            <li id="section-4.2.2-9.2">
-              <span class="bcp14">MUST</span> immediately invalidate all Refresh Tokens associated with the CDR Arrangement<a href="#section-4.2.2-9.2" class="pilcrow">¶</a>
-</li>
-            <li id="section-4.2.2-9.3">
-              <span class="bcp14">MUST</span> immediately invalid all Access Tokens associated with the CDR Arrangement<a href="#section-4.2.2-9.3" class="pilcrow">¶</a>
-</li>
-          </ol>
-</section>
-</div>
-<div id="rcare-response-1">
-<section id="section-4.2.3">
-          <h4 id="name-rcare-response-2">
-<a href="#section-4.2.3" class="section-number selfRef">4.2.3. </a><a href="#name-rcare-response-2" class="section-name selfRef">RCARE Response</a>
-          </h4>
-<p id="section-4.2.3-1">In the event of a successful revocation, the RCARE:<a href="#section-4.2.3-1" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="normal type-1" id="section-4.2.3-2">
-<li id="section-4.2.3-2.1">If the CDR Sharing Arrangement is revoked, <span class="bcp14">MUST</span> respond with a 204 HTTP status code containing no content<a href="#section-4.2.3-2.1" class="pilcrow">¶</a>
-</li>
-            <li id="section-4.2.3-2.2">If the CDR Sharing Arrangement was already revoked prior to the request being received, <span class="bcp14">SHOULD</span> respond with a 204 HTTP status code containing no content<a href="#section-4.2.3-2.2" class="pilcrow">¶</a>
-</li>
-          </ol>
-<p id="section-4.2.3-3">In the event of a failure to validate the CDR Arrangement conditions the authorisation server:<a href="#section-4.2.3-3" class="pilcrow">¶</a></p>
-<ul class="normal">
-<li class="normal" id="section-4.2.3-4.1">
-              <span class="bcp14">MUST</span> respond with a ### HTTP Status Code containing a JSON payload formatted as per Section X.X of <span>[<a href="#CDRPLUS-ERROR-CODES-BASELINE" class="cite xref">CDRPLUS-ERROR-CODES-BASELINE</a>]</span><a href="#section-4.2.3-4.1" class="pilcrow">¶</a>
-</li>
-            <li class="normal" id="section-4.2.3-4.2">
-              <span class="bcp14">SHOULD</span> respond with a 503 HTTP Status Code if currently unavailable and <span class="bcp14">MAY</span> supply a <code>Retry-After</code> indicating the earliest retry time<a href="#section-4.2.3-4.2" class="pilcrow">¶</a>
-</li>
-          </ul>
-<div id="error-codes">
-<section id="section-4.2.3.1">
-            <h5 id="name-error-codes">
-<a href="#section-4.2.3.1" class="section-number selfRef">4.2.3.1. </a><a href="#name-error-codes" class="section-name selfRef">Error Codes</a>
+<div id="successful-response-1">
+<section id="section-4.2.2.1">
+            <h5 id="name-successful-response-2">
+<a href="#section-4.2.2.1" class="section-number selfRef">4.2.2.1. </a><a href="#name-successful-response-2" class="section-name selfRef">Successful Response</a>
             </h5>
-<p id="section-4.2.3.1-1">The following additional error code is defined for the HCARE endpoint:<a href="#section-4.2.3.1-1" class="pilcrow">¶</a></p>
-<table class="center" id="table-2">
-              <caption><a href="#table-2" class="selfRef">Table 2</a></caption>
-<thead>
-                <tr>
-                  <th class="text-left" rowspan="1" colspan="1">Code</th>
-                  <th class="text-left" rowspan="1" colspan="1">Description</th>
-                  <th class="text-left" rowspan="1" colspan="1">Error Detail</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="text-left" rowspan="1" colspan="1">
-                    <code>urn:au-cds:error:cds-all:Authorisation/InvalidArrangement</code>
-</td>
-                  <td class="text-left" rowspan="1" colspan="1">The arrangement could not be found.</td>
-                  <td class="text-left" rowspan="1" colspan="1">The provided <code>cdr_arrangement_id</code> value</td>
-                </tr>
-              </tbody>
-            </table>
+<p id="section-4.2.2.1-1">In the event of a successful revocation, the Initiator:<a href="#section-4.2.2.1-1" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="compact type-1" id="section-4.2.2.1-2">
+<li id="section-4.2.2.1-2.1">if the CDR Sharing Arrangement is revoked, <span class="bcp14">SHALL</span> respond with a 204 HTTP status code containing no content<a href="#section-4.2.2.1-2.1" class="pilcrow">¶</a>
+</li>
+              <li id="section-4.2.2.1-2.2">if the CDR Sharing Arrangement was already revoked prior to the request being received, <span class="bcp14">SHOULD</span> respond with a 204 HTTP status code containing no content<a href="#section-4.2.2.1-2.2" class="pilcrow">¶</a>
+</li>
+            </ol>
 </section>
+</div>
+<div id="failure-response-1">
+<section id="section-4.2.2.2">
+            <h5 id="name-failure-response-2">
+<a href="#section-4.2.2.2" class="section-number selfRef">4.2.2.2. </a><a href="#name-failure-response-2" class="section-name selfRef">Failure Response</a>
+            </h5>
+<p id="section-4.2.2.2-1">In the event of a failure to validate the CDR Arrangement conditions the Initiator:<a href="#section-4.2.2.2-1" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="compact type-1" id="section-4.2.2.2-2">
+<li id="section-4.2.2.2-2.1">
+                <span class="bcp14">SHALL</span> respond with a  422 Unprocessable Entity response containing a JSON payload structured as as described below and;<a href="#section-4.2.2.2-2.1" class="pilcrow">¶</a>
+</li>
+              <li id="section-4.2.2.2-2.2">
+                <span class="bcp14">SHOULD</span> respond with a 503 Service Unavailable if currently unavailable and <span class="bcp14">MAY</span> supply a <code>Retry-After</code> indicating the earliest retry time<a href="#section-4.2.2.2-2.2" class="pilcrow">¶</a>
+</li>
+            </ol>
+<div id="failure-response-body-1">
+<section id="section-4.2.2.2.1">
+              <h6 id="name-failure-response-body-2">
+<a href="#section-4.2.2.2.1" class="section-number selfRef">4.2.2.2.1. </a><a href="#name-failure-response-body-2" class="section-name selfRef">Failure Response Body</a>
+              </h6>
+<p id="section-4.2.2.2.1-1">The failure response body is an object with a single attribute of <code>errors</code> containing an array of one object with the following fields:<a href="#section-4.2.2.2.1-1" class="pilcrow">¶</a></p>
+<ul class="compact">
+<li class="compact" id="section-4.2.2.2.1-2.1">
+                  <code>code</code> with the value of <code>urn:au-cds:error:cds-all:Authorisation/InvalidArrangement</code><a href="#section-4.2.2.2.1-2.1" class="pilcrow">¶</a>
+</li>
+                <li class="compact" id="section-4.2.2.2.1-2.2">
+                  <code>title</code> with the value of <code>The arrangement could not be found.</code><a href="#section-4.2.2.2.1-2.2" class="pilcrow">¶</a>
+</li>
+                <li class="compact" id="section-4.2.2.2.1-2.3">
+                  <code>detail</code> with a value containing the provided <code>cdr_arrangement_id</code><a href="#section-4.2.2.2.1-2.3" class="pilcrow">¶</a>
+</li>
+              </ul>
+<p id="section-4.2.2.2.1-3">A non-normative example of the payload is provided below:<a href="#section-4.2.2.2.1-3" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-4.2.2.2.1-4">
+<pre>{
+    "errors": [
+        {
+            "code": "urn:au-cds:error:cds-all:Authorisation/InvalidArrangement",
+            "title": "The arrangement could not be found.",
+            "detail": "b3f0c9d0-457d-4578-b0cd-52e443ae13c5"
+        }
+    ]
+}
+
+</pre><a href="#section-4.2.2.2.1-4" class="pilcrow">¶</a>
 </div>
 </section>
 </div>
@@ -1701,30 +1596,46 @@ cdr_arrangement_id=5a1bf696-ee03-408b-b315-97955415d1f0
 </div>
 </section>
 </div>
+</section>
+</div>
+</section>
+</div>
+<div id="implementation-considerations">
 <section id="section-5">
+      <h2 id="name-implementation-consideratio">
+<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-implementation-consideratio" class="section-name selfRef">Implementation Considerations</a>
+      </h2>
+<p id="section-5-1">Where a Initiator, by way of the [Request Object], requests to update an existing authorisation grant through the supply of the <code>cdr_arrangement_id</code> some ecosystems may apply additional expectations with respect to the authorisation flow. Within the Australian Consumer Data Right this is summarised within the <em>CX Standards: Amending Authorisation</em> section of the <span>[<a href="#CDS" class="cite xref">CDS</a>]</span>.<a href="#section-5-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="security-considerations">
+<section id="section-6">
+      <h2 id="name-security-considerations">
+<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
+      </h2>
+<p id="section-6-1">The CDR Sharing Arrangement Identifier <span class="bcp14">SHALL NOT</span> be guessable, derivable nor identify the Consumer.<a href="#section-6-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<section id="section-7">
       <h2 id="name-normative-references">
-<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+<a href="#section-7" class="section-number selfRef">7. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
       </h2>
 <dl class="references">
-<dt id="CDRPLUS-ADMISSION-CONTROL">[CDRPLUS-ADMISSION-CONTROL]</dt>
+<dt id="CDS">[CDS]</dt>
       <dd>
-<span class="refAuthor">Low, S.</span>, <span class="refTitle">"DataRight Plus: Admission Control"</span>, <span>&lt;<a href="https://datarightplus.github.io/datarightplus-admission-control/draft-authors-datarightplus-admission-control.html">https://datarightplus.github.io/datarightplus-admission-control/draft-authors-datarightplus-admission-control.html</a>&gt;</span>. </dd>
+<span class="refAuthor">Data Standards Body (Treasury)</span>, <span class="refTitle">"Consumer Data Standards (CDS)"</span>, <span>&lt;<a href="https://consumerdatastandardsaustralia.github.io/standards">https://consumerdatastandardsaustralia.github.io/standards</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="CDRPLUS-ERROR-CODES-BASELINE">[CDRPLUS-ERROR-CODES-BASELINE]</dt>
+<dt id="DATARIGHTPLUS-INFOSEC-BASELINE">[DATARIGHTPLUS-INFOSEC-BASELINE]</dt>
       <dd>
-<span class="refAuthor">Low, S.</span>, <span class="refTitle">"DR+ Error Codes: Baseline"</span>, <span>&lt;<a href="https://datarightplus.github.io/datarightplus-error-codes-baseline/draft-authors-datarightplus-error-codes-baseline.html">https://datarightplus.github.io/datarightplus-error-codes-baseline/draft-authors-datarightplus-error-codes-baseline.html</a>&gt;</span>. </dd>
+<span class="refAuthor">Low, S.</span>, <span class="refTitle">"DataRight+ Security Profile: Baseline"</span>, <span>&lt;<a href="https://datarightplus.github.io/datarightplus-infosec-baseline/draft-authors-datarightplus-infosec-baseline.html">https://datarightplus.github.io/datarightplus-infosec-baseline/draft-authors-datarightplus-infosec-baseline.html</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="CDRPLUS-INFOSEC-BASELINE">[CDRPLUS-INFOSEC-BASELINE]</dt>
+<dt id="DATARIGHTPLUS-ROSETTA">[DATARIGHTPLUS-ROSETTA]</dt>
       <dd>
-<span class="refAuthor">Low, S.</span>, <span class="refTitle">"DR+ Security Profile: Baseline"</span>, <span>&lt;<a href="https://datarightplus.github.io/datarightplus-infosec-baseline/draft-datarightplus-infosec-baseline.html">https://datarightplus.github.io/datarightplus-infosec-baseline/draft-datarightplus-infosec-baseline.html</a>&gt;</span>. </dd>
+<span class="refAuthor">Low, S.</span>, <span class="refTitle">"DataRight+ Rosetta Stone"</span>, <span>&lt;<a href="https://datarightplus.github.io/datarightplus-rosetta/draft-authors-datarightplus-rosetta.html">https://datarightplus.github.io/datarightplus-rosetta/draft-authors-datarightplus-rosetta.html</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="JWT">[JWT]</dt>
       <dd>
 <span class="refAuthor">Jones, M.</span>, <span class="refAuthor">Bradley, J.</span>, and <span class="refAuthor">N. Sakimura</span>, <span class="refTitle">"JSON Web Token (JWT)"</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc7519">https://datatracker.ietf.org/doc/html/rfc7519</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="OIDC-Core">[OIDC-Core]</dt>
-      <dd>
-<span class="refAuthor">Sakimura, N.</span>, <span class="refAuthor">Bradley, J.</span>, <span class="refAuthor">Jones, M.</span>, <span class="refAuthor">de Medeiros, B.</span>, and <span class="refAuthor">C. Mortimore</span>, <span class="refTitle">"OpenID Connect Core 1.0 incorporating errata set 1"</span>, <time datetime="2014-11-08" class="refDate">8 November 2014</time>, <span>&lt;<a href="http://openid.net/specs/openid-connect-core-1_0.html">http://openid.net/specs/openid-connect-core-1_0.html</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="OIDC-Discovery">[OIDC-Discovery]</dt>
       <dd>
