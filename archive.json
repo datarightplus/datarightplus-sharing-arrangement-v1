@@ -1,0 +1,83 @@
+{
+  "magic": "E!vIA5L86J2I",
+  "timestamp": "2024-06-23T00:24:48.517431+00:00",
+  "repo": "datarightplus/datarightplus-sharing-arrangement-v1",
+  "labels": [
+    {
+      "name": "bug",
+      "description": "Something isn't working",
+      "color": "d73a4a"
+    },
+    {
+      "name": "documentation",
+      "description": "Improvements or additions to documentation",
+      "color": "0075ca"
+    },
+    {
+      "name": "duplicate",
+      "description": "This issue or pull request already exists",
+      "color": "cfd3d7"
+    },
+    {
+      "name": "enhancement",
+      "description": "New feature or request",
+      "color": "a2eeef"
+    },
+    {
+      "name": "good first issue",
+      "description": "Good for newcomers",
+      "color": "7057ff"
+    },
+    {
+      "name": "help wanted",
+      "description": "Extra attention is needed",
+      "color": "008672"
+    },
+    {
+      "name": "invalid",
+      "description": "This doesn't seem right",
+      "color": "e4e669"
+    },
+    {
+      "name": "question",
+      "description": "Further information is requested",
+      "color": "d876e3"
+    },
+    {
+      "name": "wontfix",
+      "description": "This will not be worked on",
+      "color": "ffffff"
+    }
+  ],
+  "issues": [],
+  "pulls": [
+    {
+      "number": 1,
+      "id": "PR_kwDOJxPKGc5TUwS4",
+      "title": "Initial Release Review",
+      "url": "https://github.com/datarightplus/datarightplus-sharing-arrangement-v1/pull/1",
+      "state": "MERGED",
+      "author": "benkolera",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Still a draft and there's more to review and change here, but it's a start to align with my tweak to baseline",
+      "createdAt": "2023-06-19T10:16:47Z",
+      "updatedAt": "2023-07-02T00:52:05Z",
+      "baseRepository": "datarightplus/datarightplus-sharing-arrangement-v1",
+      "baseRefName": "main",
+      "baseRefOid": "7987a4981d7b93f13b9402bc4f52156deaa7dc2f",
+      "headRepository": "datarightplus/datarightplus-sharing-arrangement-v1",
+      "headRefName": "feature/initial-release-review",
+      "headRefOid": "7eb5cb2117179cf93a5cd9b3ba8f4849b358a125",
+      "closedAt": "2023-07-02T00:52:05Z",
+      "mergedAt": "2023-07-02T00:52:05Z",
+      "mergedBy": "perlboy",
+      "mergeCommit": {
+        "oid": "7eb5cb2117179cf93a5cd9b3ba8f4849b358a125"
+      },
+      "comments": [],
+      "reviews": []
+    }
+  ]
+}
