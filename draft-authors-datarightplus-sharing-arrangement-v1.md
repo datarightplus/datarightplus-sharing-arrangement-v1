@@ -1,5 +1,5 @@
 %%%
-Title = "DataRight+: Sharing Arrangement V1"
+title = "DataRight+: Sharing Arrangement V1"
 area = "Internet"
 workgroup = "datarightplus"
 submissionType = "independent"
