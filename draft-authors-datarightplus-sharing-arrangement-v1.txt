@@ -5,7 +5,7 @@
 datarightplus                                                     S. Low
 Internet-Draft                                                 B. Kolera
 Intended status: Experimental                                    Biza.io
-Expires: 3 October 2024                                     1 April 2024
+Expires: 25 March 2025                                 21 September 2024
 
 
                    DataRight+: Sharing Arrangement V1
@@ -37,7 +37,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 3 October 2024.
+   This Internet-Draft will expire on 25 March 2025.
 
 Copyright Notice
 
