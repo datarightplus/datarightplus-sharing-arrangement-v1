@@ -1,0 +1,1713 @@
+<!DOCTYPE html>
+<html lang="en" class="Internet-Draft">
+<head>
+<meta charset="utf-8">
+<meta content="Common,Latin" name="scripts">
+<meta content="initial-scale=1.0" name="viewport">
+<title>DataRight+: Sharing Arrangement V1</title>
+<meta content="Stuart Low" name="author">
+<meta content="Ben Kolera" name="author">
+<meta content="
+       This specification outlines the technical requirements related to the delivery of Sharing Arrangement V1. 
+    " name="description">
+<meta content="xml2rfc 3.26.0" name="generator">
+<meta content="draft-authors-datarightplus-sharing-arrangement-v1-latest" name="ietf.draft">
+<!-- Generator version information:
+  xml2rfc 3.26.0
+    Python 3.12.8
+    ConfigArgParse 1.7
+    google-i18n-address 3.1.1
+    intervaltree 3.1.0
+    Jinja2 3.1.5
+    lxml 5.3.0
+    platformdirs 4.3.6
+    pycountry 24.6.1
+    PyYAML 6.0.2
+    requests 2.32.3
+    setuptools 70.3.0
+    wcwidth 0.2.13
+-->
+<link href="draft-authors-datarightplus-sharing-arrangement-v1.xml" rel="alternate" type="application/rfc+xml">
+<link href="#copyright" rel="license">
+<style type="text/css">@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-vietnamese.woff2') format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-cyrillic.woff2') format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-vietnamese.woff2') format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Lora Bold'), local('Lora-Bold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-bold-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Lora Bold'), local('Lora-Bold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-bold-cyrillic.woff2') format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Lora Bold'), local('Lora-Bold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-bold-vietnamese.woff2') format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Lora Bold'), local('Lora-Bold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-bold-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Lora Bold'), local('Lora-Bold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-bold-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('Lora SemiBold'), local('Lora-SemiBold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-semibold-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Oxygen Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Oxygen Mono'), local('OxygenMono-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/oxygenmono-regular-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Oxygen Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Oxygen Mono'), local('OxygenMono-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/oxygenmono-regular-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: italic;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-italic-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: italic;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-italic-cyrillic.woff2') format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: italic;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-italic-greek.woff2') format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: italic;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-italic-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: italic;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-italic-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: normal;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-regular-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: normal;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-regular-cyrillic.woff2') format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: normal;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-regular-greek.woff2') format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: normal;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-regular-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: normal;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-regular-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  color-scheme: light dark;
+  --background-color: #fff;
+  --text-color: #222;
+  --title-color: #191919;
+  --link-color: #2a6496;
+  --highlight-color: #f9f9f9;
+  --line-color: #eee;
+  --pilcrow-weak: #ddd;
+  --pilcrow-strong: #bbb;
+  --small-font-size: 14.5px;
+  --font-mono: 'Oxygen Mono', monospace;
+  --font-title: "Sofia Sans Semi Condensed", sans-serif;
+  scrollbar-color: #bbb #eee;
+}
+body {
+  max-width: 600px;
+  margin: 75px auto;
+  padding: 0 5px;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  font: 16px/22px "Lora", serif;
+  scroll-behavior: smooth;
+}
+
+.ears {
+  display: none;
+}
+
+/* headings */
+section {
+  clear: both;
+}
+.section-number {
+  padding-right: 0.5em;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-title);
+  font-weight: 680;
+  margin: 0.8em 0 0.3em;
+  font-size-adjust: 0.5;
+  color: var(--title-color);
+}
+h1#title {
+  font-size: 32px;
+  line-height: 40px;
+  clear: both;
+}
+h1#title, h1#rfcnum {
+  margin: 1.5em 0 0.2em;
+}
+h1#rfcnum + h1#title {
+  margin: 0.2em 0;
+}
+
+h1, h2, h3 {
+  font-size: 22px;
+  line-height: 27px;
+}
+h4, h5, h6 {
+  font-size: 20px;
+  line-height: 24px;
+}
+
+/* general structure */
+.author {
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+#abstract+p {
+  font-size: 18px;
+  line-height: 24px;
+}
+#abstract+p code, #abstract+p samp, #abstract+p tt {
+  font-size: 16px;
+  line-height: 0;
+}
+
+p {
+  padding: 0;
+  margin: 0.5em 0;
+  text-align: left;
+}
+div {
+  margin: 0;
+}
+.alignRight.art-text {
+  background-color: var(--highlight-color);
+  border: 1px solid var(--line-color);
+  border-radius: 3px;
+  padding: 0.5em 1em 0;
+  margin-bottom: 0.5em;
+}
+.alignRight.art-text pre {
+  padding: 0;
+  width: auto;
+}
+.alignRight {
+  margin: 1em 0;
+}
+.alignRight > *:first-child {
+  border: none;
+  margin: 0;
+  float: right;
+  clear: both;
+}
+.alignRight > *:nth-child(2) {
+  clear: both;
+  display: block;
+  border: none;
+}
+svg {
+  display: block;
+}
+/* font-family isn't space-separated, but =~ will have to do */
+svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+  font-family: var(--font-mono);
+}
+.alignCenter.art-text {
+  background-color: var(--highlight-color);
+  border: 1px solid var(--line-color);
+  border-radius: 3px;
+  padding: 0.5em 1em 0;
+  margin-bottom: 0.5em;
+}
+.alignCenter.art-text pre {
+  padding: 0;
+  width: auto;
+}
+.alignCenter {
+  margin: 1em 0;
+}
+.alignCenter > *:first-child {
+  border: none;
+  /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+     support flexbox yet.
+  */
+  display: table;
+  margin: 0 auto;
+}
+
+/* lists */
+ol, ul {
+  padding: 0;
+  margin: 0 0 0.5em 2em;
+  & :is(ol, ul) {
+    margin-left: 1em;
+  }
+}
+li {
+  margin: 0 0 0.25em 0;
+}
+ul.empty, .ulEmpty {
+  list-style-type: none;
+  & li {
+    margin-top: 0.5em;
+  }
+}
+:is(ul, ol).compact, .ulCompact, .olCompact {
+  margin: 0 0 0 2em;
+  & li {
+    margin: 0;
+    & :first-child { margin-top: 0; }
+    & :last-child { margin-bottom: 0; }
+  }
+}
+
+/* definition lists */
+dl {
+  clear: left;
+  --indent: 3ch;
+  /* --indent: attr(indent ch); not supported in any browser, but we can dream */
+  &.olPercent {
+    --indent: 5ch;
+    & > dt {
+      min-width: calc(var(--indent) - 2ch);
+    }
+  }
+  &.olPercent > dt {
+    float: none;
+  }
+
+  dl > dd > & {
+    margin-top: 0.5em;
+    margin-bottom: 0;
+  }
+}
+dl > dt {
+  float: left;
+  margin-right: 2ch;
+  min-width: 8ch;
+}
+dl > dd {
+  margin-bottom: .8em;
+  margin-left: var(--indent) !important; /* stupid element overrides */
+  min-height: 2ex;
+}
+:is(dl.compact, .dlCompact) > dd {
+  margin-bottom: 0;
+  & > :is(:first-child, .break:first-child + *) {
+    margin-top: 0;
+  }
+  & > :is(:last-child) {
+    margin-bottom: 0;
+  }
+}
+:is(dd, span).break {
+  display: none;
+}
+
+/* links */
+a, a[href].selfRef:hover {
+  text-decoration: none;
+}
+a[href] {
+  color: var(--link-color);
+}
+a[href].selfRef, .iref + a[href].internal {
+  color: var(--text-color);
+}
+a[href]:hover {
+  text-decoration: underline;
+}
+a[href].selfRef:hover {
+  background-color: var(--highlight-color);
+}
+a.xref:is(.cite, .auto), :is(#status-of-memo, #copyright) a {
+  white-space: nowrap;
+}
+
+/* Figures */
+tt, code, pre {
+  background-color: var(--highlight-color);
+  font: 14px/22px var(--font-mono);
+}
+tt, code {
+  /* changing the font for inline elements leads to different ascender
+     and descender heights; as we want to retain baseline alignment,
+     remove leading to avoid altering the final height of lines
+     note: this fails if these blocks take an entire line,
+     a different solution would be great */
+  line-height: 0;
+}
+:is(h1, h2, h3, h4, h5, h6) :is(tt, code) {
+  font-size: 84%;
+}
+pre {
+  border: 1px solid var(--line-color);
+  font-size: 13.5px;
+  line-height: 16px;
+  letter-spacing: -0.2px;
+  margin: 5px;
+  padding: 5px;
+}
+img {
+  max-width: 100%;
+}
+figure {
+  margin: 0.5em 0;
+  padding: 0;
+}
+figure blockquote {
+  margin: 0.8em 0.4em 0.4em;
+}
+figcaption, caption {
+  font-style: italic;
+  margin: 0.5em 1.5em;
+  text-align: left;
+  caption-side: bottom;
+}
+@media screen {
+  /* Auto-collapse boilerplate. */
+  :is(#status-of-memo, #copyright) p {
+    margin: -2px 0;
+    max-height: 0;
+    transition: max-height 2s ease, margin 0.5s ease 0.5s;
+    overflow: hidden;
+  }
+  :is(#status-of-memo, #copyright):hover p,
+  :is(#status-of-memo, #copyright) h2:target ~ p {
+    margin: 0.5em 0;
+    max-height: 500px;
+    overflow: auto;
+  }
+  pre, svg {
+    display: inline-block;
+    /* In the horizontal direction, sometimes people make over-sized figures.
+       Scrollbars for those is therefore necessary: auto adds them as necessary..
+       In the vertical direction, the line-height can combine with the font
+       asender/descender height to produce scrollbars: hidden avoids that. */
+    overflow: auto hidden;
+  }
+  pre {
+    max-width: 100%;
+    width: calc(100% - 22px - 1em);
+  }
+  svg {
+    max-width: calc(100% - 22px - 1em);
+  }
+  figure pre {
+    display: block;
+    width: calc(100% - 25px);
+  }
+  :is(pre, svg) + .pilcrow {
+    display: inline-block;
+    vertical-align: text-bottom;
+    padding-bottom: 8px;
+  }
+}
+
+/* aside, blockquote */
+aside, blockquote {
+  margin-left: 0;
+  padding: 0 2em;
+  font-style: italic;
+}
+blockquote {
+  margin: 1em 0;
+}
+cite {
+  display: block;
+  text-align: right;
+  font-style: italic;
+}
+
+/* tables */
+table {
+  width: auto;
+  max-width: 100%;
+  margin: 0 0 1em;
+  border-collapse: collapse;
+}
+table.right {
+  margin-left: auto;
+}
+table.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+table.left {
+  margin-right: auto;
+}
+table .text-left {
+  text-align: left;
+}
+table .text-center {
+  text-align: center;
+}
+table .text-right {
+  text-align: right;
+}
+
+thead, tbody {
+  border: 1px solid var(--line-color);
+}
+th, td {
+  text-align: left;
+  vertical-align: top;
+  padding: 5px 10px;
+}
+th {
+  background-color: var(--line-color);
+}
+:is(tr:nth-child(2n), thead+tbody > tr:nth-child(2n+1)) > td {
+  background-color: var(--background-color);
+}
+:is(tr:nth-child(2n+1), thead+tbody > tr:nth-child(2n)) > td {
+  background-color: var(--highlight-color);
+}
+table caption {
+  margin: 0;
+  padding: 3px 0 3px 1em;
+}
+table p {
+  margin: 0;
+}
+
+/* pilcrow */
+a.pilcrow {
+  margin-left: 3px;
+  opacity: 0.2;
+  user-select: none;
+  &[href] {
+    color: var(--pilcrow-weak);
+    &:hover { text-decoration: none; }
+  }
+}
+@media not print {
+  :hover > a.pilcrow {
+    opacity: 1;
+  }
+  a.pilcrow[href]:hover {
+    color: var(--pilcrow-strong);
+    background-color: transparent;
+  }
+}
+@media print {
+  a.pilcrow {
+    display: none;
+  }
+}
+
+/* misc */
+hr {
+  border: 0;
+  border-top: 1px solid var(--line-color);
+}
+.bcp14 {
+  font-variant: small-caps;
+  font-weight: 600;
+  font-size: var(--small-font-size);
+}
+.role {
+  font-variant: all-small-caps;
+}
+sub, sup {
+  line-height: 1;
+  font-size: 80%;
+}
+
+/* info block */
+#identifiers {
+  margin: 0;
+  font-size: var(--small-font-size);
+  line-height: 18px;
+  --identifier-width: 15ch;
+  & dt {
+    width: var(--identifier-width);
+    min-width: var(--identifier-width);
+    clear: left;
+    float: left;
+    text-align: right;
+    margin-right: 1ch;
+  }
+  & dd {
+    margin: 0;
+    margin-left: calc(1em + var(--identifier-width)) !important;
+    min-width: 5em;
+  }
+  & .authors {
+    & .author {
+      display: inline-block;
+      margin-right: 1.5em;
+    }
+    & .org {
+      font-style: italic;
+    }
+  }
+}
+
+/* The prepared/rendered info at the very bottom of the page */
+.docInfo {
+  color: #999;
+  font-size: 0.9em;
+  font-style: italic;
+  margin-top: 2em;
+}
+.docInfo .prepared {
+  float: right;
+}
+
+/* table of contents */
+#toc {
+  padding: 0.75em 0 2em 0;
+  margin-bottom: 1em;
+
+  & nav {
+    & ul {
+      margin: 0 0.5em 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    & li {
+      line-height: 1.3em;
+      margin: 2px 0;
+      padding-left: 1.2em;
+      text-indent: -1.2em;
+    }
+  }
+  & a.xref {
+    white-space: normal;
+  }
+}
+
+.references {
+  & > dt {
+    text-align: right;
+    font-weight: bold;
+    min-width: 10ch;
+    margin-right: 1.5ch;
+    &:target::before {
+      content: "⇒";
+      margin: 0 10px 0 -25px;
+    }
+  }
+  & > dd {
+    margin-left: 12ch !important;
+    overflow: visible;
+    & .refInstance {
+      margin-bottom: 0.8em;
+    }
+    & .ascii {
+      margin-bottom: 0.25em;
+    }
+  }
+}
+
+#rfc\.index\.index + ul {
+  margin-left: 0;
+}
+
+/* authors */
+address.vcard {
+  font-style: normal;
+  max-width: 20em;
+  margin: 1em auto 1em 0;
+
+  & .nameRole {
+    font-weight: 700;
+    margin-left: 0;
+  }
+  & .label {
+    margin: 0.5em 0;
+  }
+  & .type {
+    display: none;
+  }
+  & .alternative-contact {
+    margin: 0.5em 0 0.25em 0;
+  }
+  & .non-ascii {
+    margin: 0 0 0 2em;
+  }
+  & div.left {
+    text-align: left;
+  }
+  & div.right {
+    text-align: right;
+  }
+}
+
+hr.addr {
+  border-top: 1px dashed;
+  margin: 0;
+  color: #ddd;
+  max-width: calc(100% - 16px);
+}
+@media (min-width: 500px) {
+  #authors-addresses > section {
+    column-count: 2;
+    column-gap: 20px;
+  }
+  #authors-addresses > section > h2 {
+    column-span: all;
+  }
+  /* hack for break-inside: avoid-column */
+  #authors-addresses address {
+    display: inline-block;
+    break-inside: avoid-column;
+  }
+}
+
+/* Comments */
+.rfcEditorRemove p:first-of-type {
+  font-style: italic;
+}
+.cref {
+  background-color: rgba(249, 232, 105, 0.3);
+  padding: 2px 4px;
+}
+.crefSource {
+  font-style: italic;
+}
+
+@media screen {
+  #toc nav {
+    font-family: var(--font-title);
+    font-weight: 360;
+    & > ul { margin-bottom: 2em; }
+    & ul {
+      margin: 0 0 0 4px;
+      & :is(p, li) {
+        margin: 2px 0;
+      }
+    }
+  }
+  #toc a.toplink {
+    float: right;
+  }
+}
+@media not screen {
+  #toc a.toplink {
+    display: none;
+  }
+}
+
+
+/* TOC layout for smaller screens */
+@media screen and (max-width: 929px) {
+  #toc {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    padding: 1px 0 0 0;
+    margin: 0;
+    border-bottom: 1px solid #ccc;
+    opacity: 0.6;
+  }
+  #toc h2 {
+    margin: 0;
+    padding: 2px 0 2px 6px;
+    padding-right: 1em;
+    font-size: 18px;
+    line-height: 24px;
+    min-width: 190px;
+    text-align: right;
+    background-color: #444;
+    color: white;
+    cursor: pointer;
+    &::before { /* css hamburger */
+      float: right;
+      position: relative;
+      width: 1em;
+      height: 1px;
+      left: -164px;
+      margin: 8px 0 0 0;
+      background: white none repeat scroll 0 0;
+      box-shadow: 0 4px 0 0 white, 0 8px 0 0 white;
+      content: "";
+    }
+  }
+  #toc nav {
+    display: none;
+    background-color: var(--background-color);
+    padding: 0.5em 1em 1em;
+    overflow: auto;
+    overscroll-behavior: contain;
+    height: calc(100vh - 48px);
+    border-left: 1px solid #ddd;
+  }
+  #toc.active {
+    opacity: 1;
+    & nav { display: block; }
+  }
+  /* Make the collapsed ToC header render white on gray also when it's a link */
+  #toc h2 a,
+  #toc h2 a:is(:link, :focus, :hover),
+  #toc a.toplink,
+  #toc a.toplink:hover {
+    color: white;
+    background-color: #444;
+    text-decoration: none;
+  }
+  #toc a.toplink {
+    margin: 2px 0.5em 0;
+  }
+}
+
+/* TOC layout for wide screens */
+@media screen and (min-width: 930px) {
+  body {
+    padding-right: 360px;
+    padding-right: calc(min(180px + 20%, 500px));
+  }
+  #toc {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    right: calc(50vw - 480px);
+    width: 312px;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+  }
+  #toc h2 {
+    margin: 0;
+    padding: 0.25em 1em 1em 0;
+  }
+  #toc nav {
+    display: block;
+    height: calc(90vh - 84px);
+    bottom: 0;
+    padding: 0.5em 0 2em;
+    overflow: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+  }
+  img { /* future proofing */
+    max-width: 100%;
+    height: auto;
+  }
+  #toc a.toplink {
+    margin: 8px 0.5em 0;
+  }
+}
+
+/* pagination */
+@media print {
+  body {
+    width: 100%;
+  }
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+  #n-copyright-notice {
+    border-bottom: none;
+  }
+  #toc, #n-introduction {
+    page-break-before: always;
+  }
+  #toc {
+    border-top: none;
+    padding-top: 0;
+  }
+  figure, pre, .vcard {
+    page-break-inside: avoid;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+  }
+  :is(h2, h3, h4, h5, h6)+*, dd {
+    page-break-before: avoid;
+  }
+  pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-size: 10pt;
+  }
+  table {
+    border: 1px solid #ddd;
+  }
+  td {
+    border-top: 1px solid #ddd;
+  }
+}
+
+@page :first {
+  padding-top: 0;
+  @top-left {
+    content: normal;
+    border: none;
+  }
+  @top-center {
+    content: normal;
+    border: none;
+  }
+  @top-right {
+    content: normal;
+    border: none;
+  }
+}
+
+@page {
+  size: A4;
+  margin-bottom: 45mm;
+  padding-top: 20px;
+}
+
+/* Dark mode. */
+@media (prefers-color-scheme: dark) {
+:root {
+  --background-color: #121212;
+  --text-color: #f0f0f0;
+  --title-color: #fff;
+  --link-color: #4da4f0;
+  --highlight-color: #282828;
+  --line-color: #444;
+  --pilcrow-weak: #444;
+  --pilcrow-strong: #666;
+  scrollbar-color: #777 #333;
+}
+}
+
+/* SVG Trick: a prefix match works because only black and white are allowed */
+svg :is([stroke="black"], [stroke^="#000"]) {
+  stroke: var(--text-color);
+}
+svg :is([stroke="white"], [stroke^="#fff"]) {
+  stroke: var(--background-color);
+}
+svg :is([fill="black"], [fill^="#000"], :not([fill])) {
+  fill: var(--text-color);
+}
+svg :is([fill="white"], [fill^="#fff"]) {
+  fill: var(--background-color);
+}
+</style>
+
+</head>
+<body class="xml2rfc">
+<table class="ears">
+<thead><tr>
+<td class="left">Internet-Draft</td>
+<td class="center">DataRight+: Sharing Arrangement V1</td>
+<td class="right">February 2025</td>
+</tr></thead>
+<tfoot><tr>
+<td class="left">Low &amp; Kolera</td>
+<td class="center">Expires 13 August 2025</td>
+<td class="right">[Page]</td>
+</tr></tfoot>
+</table>
+<div id="external-metadata" class="document-information"></div>
+<div id="internal-metadata" class="document-information">
+<dl id="identifiers">
+<dt class="label-workgroup">Workgroup:</dt>
+<dd class="workgroup">datarightplus</dd>
+<dt class="label-internet-draft">Internet-Draft:</dt>
+<dd class="internet-draft">draft-authors-datarightplus-sharing-arrangement-v1-latest</dd>
+<dt class="label-published">Published:</dt>
+<dd class="published">
+<time datetime="2025-02-09" class="published">9 February 2025</time>
+    </dd>
+<dt class="label-intended-status">Intended Status:</dt>
+<dd class="intended-status">Experimental</dd>
+<dt class="label-expires">Expires:</dt>
+<dd class="expires"><time datetime="2025-08-13">13 August 2025</time></dd>
+<dt class="label-authors">Authors:</dt>
+<dd class="authors">
+<div class="author">
+      <div class="author-name">S. Low</div>
+<div class="org">Biza.io</div>
+</div>
+<div class="author">
+      <div class="author-name">B. Kolera</div>
+<div class="org">Biza.io</div>
+</div>
+</dd>
+</dl>
+</div>
+<h1 id="title">DataRight+: Sharing Arrangement V1</h1>
+<section id="section-abstract">
+      <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
+<p id="section-abstract-1">This specification outlines the technical requirements related to the delivery of Sharing Arrangement V1.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+</section>
+<section class="note" id="section-note.1">
+      <h2 id="name-notational-conventions">
+<a href="#name-notational-conventions" class="section-name selfRef">Notational Conventions</a>
+      </h2>
+<p id="section-note.1-1">The keywords  "<span class="bcp14">REQUIRED</span>", "<span class="bcp14">SHALL</span>", "<span class="bcp14">SHALL NOT</span>", "<span class="bcp14">SHOULD</span>", "<span class="bcp14">SHOULD NOT</span>", "<span class="bcp14">RECOMMENDED</span>",  "<span class="bcp14">MAY</span>", and "<span class="bcp14">OPTIONAL</span>" in this document are to be interpreted as described in <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span>.<a href="#section-note.1-1" class="pilcrow">¶</a></p>
+</section>
+<div id="status-of-memo">
+<section id="section-boilerplate.1">
+        <h2 id="name-status-of-this-memo">
+<a href="#name-status-of-this-memo" class="section-name selfRef">Status of This Memo</a>
+        </h2>
+<p id="section-boilerplate.1-1">
+        This Internet-Draft is submitted in full conformance with the
+        provisions of BCP 78 and BCP 79.<a href="#section-boilerplate.1-1" class="pilcrow">¶</a></p>
+<p id="section-boilerplate.1-2">
+        Internet-Drafts are working documents of the Internet Engineering Task
+        Force (IETF). Note that other groups may also distribute working
+        documents as Internet-Drafts. The list of current Internet-Drafts is
+        at <span><a href="https://datatracker.ietf.org/drafts/current/">https://datatracker.ietf.org/drafts/current/</a></span>.<a href="#section-boilerplate.1-2" class="pilcrow">¶</a></p>
+<p id="section-boilerplate.1-3">
+        Internet-Drafts are draft documents valid for a maximum of six months
+        and may be updated, replaced, or obsoleted by other documents at any
+        time. It is inappropriate to use Internet-Drafts as reference
+        material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
+<p id="section-boilerplate.1-4">
+        This Internet-Draft will expire on 13 August 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="copyright">
+<section id="section-boilerplate.2">
+        <h2 id="name-copyright-notice">
+<a href="#name-copyright-notice" class="section-name selfRef">Copyright Notice</a>
+        </h2>
+<p id="section-boilerplate.2-1">
+            Copyright (c) 2025 IETF Trust and the persons identified as the
+            document authors. All rights reserved.<a href="#section-boilerplate.2-1" class="pilcrow">¶</a></p>
+<p id="section-boilerplate.2-2">
+            This document is subject to BCP 78 and the IETF Trust's Legal
+            Provisions Relating to IETF Documents
+            (<span><a href="https://trustee.ietf.org/license-info">https://trustee.ietf.org/license-info</a></span>) in effect on the date of
+            publication of this document. Please review these documents
+            carefully, as they describe your rights and restrictions with
+            respect to this document.<a href="#section-boilerplate.2-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="toc">
+<section id="section-toc.1">
+        <a href="#" onclick="scroll(0,0)" class="toplink">▲</a><h2 id="name-table-of-contents">
+<a href="#name-table-of-contents" class="section-name selfRef">Table of Contents</a>
+        </h2>
+<nav class="toc"><ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+            <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-scope" class="internal xref">Scope</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+            <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-terms-definitions" class="internal xref">Terms &amp; Definitions</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+            <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-provider" class="internal xref">Provider</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
+                <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-authorisation-server" class="internal xref">Authorisation Server</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1.2.1">
+                    <p id="section-toc.1-1.3.2.1.2.1.1" class="keepWithNext"><a href="#section-3.1.1" class="auto internal xref">3.1.1</a>.  <a href="#name-request-object" class="internal xref">Request Object</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1.2.2">
+                    <p id="section-toc.1-1.3.2.1.2.2.1"><a href="#section-3.1.2" class="auto internal xref">3.1.2</a>.  <a href="#name-claims" class="internal xref">Claims</a></p>
+</li>
+                </ul>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
+                <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-provider-cdr-arrangement-re" class="internal xref">Provider CDR Arrangement Revocation Endpoint (PCARE)</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2.2.1">
+                    <p id="section-toc.1-1.3.2.2.2.1.1"><a href="#section-3.2.1" class="auto internal xref">3.2.1</a>.  <a href="#name-pcare-discovery" class="internal xref">PCARE Discovery</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2.2.2">
+                    <p id="section-toc.1-1.3.2.2.2.2.1"><a href="#section-3.2.2" class="auto internal xref">3.2.2</a>.  <a href="#name-pcare-request" class="internal xref">PCARE Request</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2.2.3">
+                    <p id="section-toc.1-1.3.2.2.2.3.1"><a href="#section-3.2.3" class="auto internal xref">3.2.3</a>.  <a href="#name-pcare-response" class="internal xref">PCARE Response</a></p>
+</li>
+                </ul>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-initiator" class="internal xref">Initiator</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
+                <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-authorisation-client" class="internal xref">Authorisation Client</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
+                <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-initiator-cdr-arrangement-r" class="internal xref">Initiator CDR Arrangement Revocation Endpoint (ICARE)</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2.2.1">
+                    <p id="section-toc.1-1.4.2.2.2.1.1"><a href="#section-4.2.1" class="auto internal xref">4.2.1</a>.  <a href="#name-icare-request" class="internal xref">ICARE Request</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2.2.2">
+                    <p id="section-toc.1-1.4.2.2.2.2.1"><a href="#section-4.2.2" class="auto internal xref">4.2.2</a>.  <a href="#name-icare-response" class="internal xref">ICARE Response</a></p>
+</li>
+                </ul>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-implementation-consideratio" class="internal xref">Implementation Considerations</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+            <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+            <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+            <p id="section-toc.1-1.8.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+</li>
+        </ul>
+</nav>
+</section>
+</div>
+<div id="scope">
+<section id="section-1">
+      <h2 id="name-scope">
+<a href="#section-1" class="section-number selfRef">1. </a><a href="#name-scope" class="section-name selfRef">Scope</a>
+      </h2>
+<p id="section-1-1">The scope of this specification is focused on describing the authorisation related components of establishing a CDR Sharing Arrangement. This specification unavoidably references ecosystem specific concepts (Australian CDR) due to the very nature of localised claim names. Sharing Arrangement V1 therefore is aligned with the definition of a CDR Arrangement as originally outlined within <span>[<a href="#CDS" class="cite xref">CDS</a>]</span>.<a href="#section-1-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="terms-definitions">
+<section id="section-2">
+      <h2 id="name-terms-definitions">
+<a href="#section-2" class="section-number selfRef">2. </a><a href="#name-terms-definitions" class="section-name selfRef">Terms &amp; Definitions</a>
+      </h2>
+<p id="section-2-1">This specification uses the terms "Consumer", "Provider", "Initiator", "Personally Identifiable Information (PII)",
+"Pairwise Pseudonymous Identifier (PPID)", "Initiator", "CDR Sharing Arrangement" and "CDR Sharing Arrangement Identifier"  as defined by <span>[<a href="#DATARIGHTPLUS-ROSETTA" class="cite xref">DATARIGHTPLUS-ROSETTA</a>]</span>.<a href="#section-2-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="provider">
+<section id="section-3">
+      <h2 id="name-provider">
+<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-provider" class="section-name selfRef">Provider</a>
+      </h2>
+<p id="section-3-1">The following provisions apply to services delivered by Providers.<a href="#section-3-1" class="pilcrow">¶</a></p>
+<div id="authorisation-server">
+<section id="section-3.1">
+        <h3 id="name-authorisation-server">
+<a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-authorisation-server" class="section-name selfRef">Authorisation Server</a>
+        </h3>
+<p id="section-3.1-1">In addition to the provisions outlined in <span>[<a href="#DATARIGHTPLUS-INFOSEC-BASELINE" class="cite xref">DATARIGHTPLUS-INFOSEC-BASELINE</a>]</span> the authorisation server:<a href="#section-3.1-1" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="compact type-1" id="section-3.1-2">
+<li id="section-3.1-2.1">
+            <span class="bcp14">SHALL NOT</span> issue a refresh token unless the duration of the CDR Arrangement is greater than <code>0</code> (see [Request Object])<a href="#section-3.1-2.1" class="pilcrow">¶</a>
+</li>
+          <li id="section-3.1-2.2">
+            <span class="bcp14">SHALL</span>, where the supplied <code>cdr_arrangement_id</code>, if provided, does not match the authenticated Consumer and as soon as practicable, return an OAuth2 Error<a href="#section-3.1-2.2" class="pilcrow">¶</a>
+</li>
+          <li id="section-3.1-2.3">
+            <span class="bcp14">SHALL</span> modify the existing authorisation grant referenced by the <code>cdr_arrangement_id</code>, if provided, while maintaining the <code>cdr_arrangement_id</code> between such authorisations<a href="#section-3.1-2.3" class="pilcrow">¶</a>
+</li>
+          <li id="section-3.1-2.4">
+            <span class="bcp14">SHALL</span> revoke previously issued Access and refresh tokens when modifying existing authorisation grants;<a href="#section-3.1-2.4" class="pilcrow">¶</a>
+</li>
+          <li id="section-3.1-2.5">
+            <span class="bcp14">SHALL</span> support the Provider CDR Arrangement Revocation Endpoint (PCARE);<a href="#section-3.1-2.5" class="pilcrow">¶</a>
+</li>
+          <li id="section-3.1-2.6">
+            <span class="bcp14">SHALL</span> publish the url for the [Provider CDR Arrangement Revocation Endpoint (PCARE)] as an attribute named <code>cdr_arrangement_revocation_endpoint</code> within the OpenID Connect Discovery 1.0 <span>[<a href="#OIDC-Discovery" class="cite xref">OIDC-Discovery</a>]</span> endpoint response;<a href="#section-3.1-2.6" class="pilcrow">¶</a>
+</li>
+        </ol>
+<div id="request-object">
+<section id="section-3.1.1">
+          <h4 id="name-request-object">
+<a href="#section-3.1.1" class="section-number selfRef">3.1.1. </a><a href="#name-request-object" class="section-name selfRef">Request Object</a>
+          </h4>
+<p id="section-3.1.1-1">The request object submitted to the authorisation server:<a href="#section-3.1.1-1" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="compact type-1" id="section-3.1.1-2">
+<li id="section-3.1.1-2.1">
+              <span class="bcp14">SHALL</span> support an optional integer parameter of <code>sharing_duration</code> representing the number of seconds requested for data sharing. The default value of this parameter <span class="bcp14">SHALL</span> be <code>0</code> and the maximum value <span class="bcp14">SHALL NOT</span> exceed <code>31536000</code>.<a href="#section-3.1.1-2.1" class="pilcrow">¶</a>
+</li>
+            <li id="section-3.1.1-2.2">
+              <span class="bcp14">SHALL</span> support an optional string parameter <code>cdr_arrangement_id</code> referencing an existing CDR Arrangement (see CDR Sharing Arrangement Identifier);<a href="#section-3.1.1-2.2" class="pilcrow">¶</a>
+</li>
+            <li id="section-3.1.1-2.3">
+              <span class="bcp14">SHALL</span> reject requests containing a <code>cdr_arrangement_id</code> parameter that is unknown, expired or not associated with the requesting Initiator<a href="#section-3.1.1-2.3" class="pilcrow">¶</a>
+</li>
+          </ol>
+</section>
+</div>
+<div id="claims">
+<section id="section-3.1.2">
+          <h4 id="name-claims">
+<a href="#section-3.1.2" class="section-number selfRef">3.1.2. </a><a href="#name-claims" class="section-name selfRef">Claims</a>
+          </h4>
+<p id="section-3.1.2-1">The authorisation server:<a href="#section-3.1.2-1" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="compact type-1" id="section-3.1.2-2">
+<li id="section-3.1.2-2.1">
+              <p id="section-3.1.2-2.1.1"><span class="bcp14">SHALL</span> include within the Introspection Endpoint response:<a href="#section-3.1.2-2.1.1" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="compact type-1" id="section-3.1.2-2.1.2">
+<li id="section-3.1.2-2.1.2.1">the <code>exp</code> claim, with a value equal to the expiry time of the underlying CDR Arrangement and;<a href="#section-3.1.2-2.1.2.1" class="pilcrow">¶</a>
+</li>
+                <li id="section-3.1.2-2.1.2.2">the <code>cdr_arrangement_id</code> claim, containing the assigned [CDR Sharing Arrangement Identifier]<a href="#section-3.1.2-2.1.2.2" class="pilcrow">¶</a>
+</li>
+              </ol>
+</li>
+            <li id="section-3.1.2-2.2">
+              <span class="bcp14">SHALL</span> ensure the <code>cdr_arrangement_id</code> claim is persistent and does not change between token interactions;<a href="#section-3.1.2-2.2" class="pilcrow">¶</a>
+</li>
+          </ol>
+</section>
+</div>
+</section>
+</div>
+<div id="provider-cdr-arrangement-revocation-endpoint-pcare">
+<section id="section-3.2">
+        <h3 id="name-provider-cdr-arrangement-re">
+<a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-provider-cdr-arrangement-re" class="section-name selfRef">Provider CDR Arrangement Revocation Endpoint (PCARE)</a>
+        </h3>
+<p id="section-3.2-1">The Provider CDR Arrangement (PCARE) Revocation endpoint accepts a CDR Sharing Arrangement Identifier and immediately revokes the CDR Sharing Arrangement.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
+<div id="pcare-discovery">
+<section id="section-3.2.1">
+          <h4 id="name-pcare-discovery">
+<a href="#section-3.2.1" class="section-number selfRef">3.2.1. </a><a href="#name-pcare-discovery" class="section-name selfRef">PCARE Discovery</a>
+          </h4>
+<p id="section-3.2.1-1">The PCARE endpoint <span class="bcp14">SHALL</span> be advertised using the <code>cdr_arrangement_revocation_endpoint</code> attribute at the OpenID Connect Discovery 1.0 <span>[<a href="#OIDC-Discovery" class="cite xref">OIDC-Discovery</a>]</span> endpoint.<a href="#section-3.2.1-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="pcare-request">
+<section id="section-3.2.2">
+          <h4 id="name-pcare-request">
+<a href="#section-3.2.2" class="section-number selfRef">3.2.2. </a><a href="#name-pcare-request" class="section-name selfRef">PCARE Request</a>
+          </h4>
+<p id="section-3.2.2-1">The PCARE endpoint receives requests using the HTTP POST <span>[<a href="#RFC7231" class="cite xref">RFC7231</a>]</span> method with parameters sent as <code>application/x-www-form-urlencoded</code> data as defined in <span>[<a href="#W3C.REC-html5-20141028" class="cite xref">W3C.REC-html5-20141028</a>]</span>.<a href="#section-3.2.2-1" class="pilcrow">¶</a></p>
+<p id="section-3.2.2-2">In addition to authentication credentials described in Section 2.2 of <span>[<a href="#RFC7523" class="cite xref">RFC7523</a>]</span> the endpoint includes the CDR Sharing Arrangement Identifier as an additional parameter, specified as follows:<a href="#section-3.2.2-2" class="pilcrow">¶</a></p>
+<ul class="compact">
+<li class="compact" id="section-3.2.2-3.1">
+              <code>cdr_arrangement_id</code>: <span class="bcp14">REQUIRED</span>  The CDR Sharing Arrangement Identifier previously provided in the token and introspection endpoint responses.<a href="#section-3.2.2-3.1" class="pilcrow">¶</a>
+</li>
+          </ul>
+<p id="section-3.2.2-4">An example request to the Provider CDR Arrangement Revocation Endpoint is as follows:<a href="#section-3.2.2-4" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-3.2.2-5">
+<pre>POST https://data.provider.com.au/arrangements/revoke
+HTTP/1.1
+Host: data.Provider.com.au
+Content-Type: application/x-www-form-urlencoded
+
+client_id=s6BhdRkqt3&amp;
+client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&amp;
+client_assertion=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey ...&amp;
+cdr_arrangement_id=5a1bf696-ee03-408b-b315-97955415d1f0
+
+</pre><a href="#section-3.2.2-5" class="pilcrow">¶</a>
+</div>
+<p id="section-3.2.2-6">On receipt of a valid request the Provider authorisation server:<a href="#section-3.2.2-6" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="compact type-1" id="section-3.2.2-7">
+<li id="section-3.2.2-7.1">
+              <span class="bcp14">SHALL</span> validate the client credentials as per Section 2.2 of <span>[<a href="#RFC7523" class="cite xref">RFC7523</a>]</span> and;<a href="#section-3.2.2-7.1" class="pilcrow">¶</a>
+</li>
+            <li id="section-3.2.2-7.2">
+              <span class="bcp14">SHALL</span> validate the <code>cdr_arrangement_id</code> relates to a valid CDR Sharing Arrangement and;<a href="#section-3.2.2-7.2" class="pilcrow">¶</a>
+</li>
+            <li id="section-3.2.2-7.3">
+              <span class="bcp14">SHALL</span> verify the CDR Sharing Arrangement referenced by specified <code>cdr_arrangement_id</code> belongs to validated client<a href="#section-3.2.2-7.3" class="pilcrow">¶</a>
+</li>
+            <li id="section-3.2.2-7.4">
+              <p id="section-3.2.2-7.4.1">If all of the above conditions are met the authorisation server:<a href="#section-3.2.2-7.4.1" class="pilcrow">¶</a></p>
+<ul class="compact">
+<li class="compact" id="section-3.2.2-7.4.2.1">
+                  <span class="bcp14">SHALL</span> immediately invalidate the CDR Arrangement<a href="#section-3.2.2-7.4.2.1" class="pilcrow">¶</a>
+</li>
+                <li class="compact" id="section-3.2.2-7.4.2.2">
+                  <span class="bcp14">SHALL</span> immediately invalidate all refresh tokens associated with the CDR Arrangement<a href="#section-3.2.2-7.4.2.2" class="pilcrow">¶</a>
+</li>
+                <li class="compact" id="section-3.2.2-7.4.2.3">
+                  <span class="bcp14">SHALL</span> immediately invalid all access tokens associated with the CDR Arrangement<a href="#section-3.2.2-7.4.2.3" class="pilcrow">¶</a>
+</li>
+              </ul>
+</li>
+          </ol>
+</section>
+</div>
+<div id="pcare-response">
+<section id="section-3.2.3">
+          <h4 id="name-pcare-response">
+<a href="#section-3.2.3" class="section-number selfRef">3.2.3. </a><a href="#name-pcare-response" class="section-name selfRef">PCARE Response</a>
+          </h4>
+<div id="successful-response">
+<section id="section-3.2.3.1">
+            <h5 id="name-successful-response">
+<a href="#section-3.2.3.1" class="section-number selfRef">3.2.3.1. </a><a href="#name-successful-response" class="section-name selfRef">Successful Response</a>
+            </h5>
+<p id="section-3.2.3.1-1">In the event of a successful revocation, the authorisation server:<a href="#section-3.2.3.1-1" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="compact type-1" id="section-3.2.3.1-2">
+<li id="section-3.2.3.1-2.1">If the CDR Sharing Arrangement is revoked, <span class="bcp14">SHALL</span> respond with a 204 HTTP status code containing no content<a href="#section-3.2.3.1-2.1" class="pilcrow">¶</a>
+</li>
+              <li id="section-3.2.3.1-2.2">If the CDR Sharing Arrangement was already revoked prior to the request being received, <span class="bcp14">SHOULD</span> respond with a 204 HTTP status code containing no content<a href="#section-3.2.3.1-2.2" class="pilcrow">¶</a>
+</li>
+            </ol>
+</section>
+</div>
+<div id="failure-response">
+<section id="section-3.2.3.2">
+            <h5 id="name-failure-response">
+<a href="#section-3.2.3.2" class="section-number selfRef">3.2.3.2. </a><a href="#name-failure-response" class="section-name selfRef">Failure Response</a>
+            </h5>
+<p id="section-3.2.3.2-1">In the event of a failure to validate the CDR Arrangement conditions the authorisation server:<a href="#section-3.2.3.2-1" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="compact type-1" id="section-3.2.3.2-2">
+<li id="section-3.2.3.2-2.1">
+                <span class="bcp14">SHALL</span> respond with a  422 Unprocessable Entity response containing a JSON payload structured as as described below and;<a href="#section-3.2.3.2-2.1" class="pilcrow">¶</a>
+</li>
+              <li id="section-3.2.3.2-2.2">
+                <span class="bcp14">SHOULD</span> respond with a 503 Service Unavailable if currently unavailable and <span class="bcp14">MAY</span> supply a <code>Retry-After</code> indicating the earliest retry time<a href="#section-3.2.3.2-2.2" class="pilcrow">¶</a>
+</li>
+            </ol>
+<div id="failure-response-body">
+<section id="section-3.2.3.2.1">
+              <h6 id="name-failure-response-body">
+<a href="#section-3.2.3.2.1" class="section-number selfRef">3.2.3.2.1. </a><a href="#name-failure-response-body" class="section-name selfRef">Failure Response Body</a>
+              </h6>
+<p id="section-3.2.3.2.1-1">The failure response body is an object with a single attribute of <code>errors</code> containing an array of one object with the following fields:<a href="#section-3.2.3.2.1-1" class="pilcrow">¶</a></p>
+<ul class="compact">
+<li class="compact" id="section-3.2.3.2.1-2.1">
+                  <code>code</code> with the value of <code>urn:au-cds:error:cds-all:Authorisation/InvalidArrangement</code><a href="#section-3.2.3.2.1-2.1" class="pilcrow">¶</a>
+</li>
+                <li class="compact" id="section-3.2.3.2.1-2.2">
+                  <code>title</code> with the value of <code>The arrangement could not be found.</code><a href="#section-3.2.3.2.1-2.2" class="pilcrow">¶</a>
+</li>
+                <li class="compact" id="section-3.2.3.2.1-2.3">
+                  <code>detail</code> with a value containing the provided <code>cdr_arrangement_id</code><a href="#section-3.2.3.2.1-2.3" class="pilcrow">¶</a>
+</li>
+              </ul>
+<p id="section-3.2.3.2.1-3">A non-normative example of the payload is provided below:<a href="#section-3.2.3.2.1-3" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-3.2.3.2.1-4">
+<pre>{
+    "errors": [
+        {
+            "code": "urn:au-cds:error:cds-all:Authorisation/InvalidArrangement",
+            "title": "The arrangement could not be found.",
+            "detail": "b3f0c9d0-457d-4578-b0cd-52e443ae13c5"
+        }
+    ]
+}
+
+</pre><a href="#section-3.2.3.2.1-4" class="pilcrow">¶</a>
+</div>
+</section>
+</div>
+</section>
+</div>
+</section>
+</div>
+</section>
+</div>
+</section>
+</div>
+<div id="initiator">
+<section id="section-4">
+      <h2 id="name-initiator">
+<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-initiator" class="section-name selfRef">Initiator</a>
+      </h2>
+<p id="section-4-1">The following provisions apply to participants operating individual Initiators.<a href="#section-4-1" class="pilcrow">¶</a></p>
+<div id="authorisation-client">
+<section id="section-4.1">
+        <h3 id="name-authorisation-client">
+<a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-authorisation-client" class="section-name selfRef">Authorisation Client</a>
+        </h3>
+<p id="section-4.1-1">An Initiators authorisation client:<a href="#section-4.1-1" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="compact type-1" id="section-4.1-2">
+<li id="section-4.1-2.1">
+            <span class="bcp14">SHALL</span> support the provisions specified in Section 4 of <span>[<a href="#DATARIGHTPLUS-INFOSEC-BASELINE" class="cite xref">DATARIGHTPLUS-INFOSEC-BASELINE</a>]</span><a href="#section-4.1-2.1" class="pilcrow">¶</a>
+</li>
+          <li id="section-4.1-2.2">
+            <span class="bcp14">SHALL</span> support the submission of Request Object parameters outlined in [Request Object]<a href="#section-4.1-2.2" class="pilcrow">¶</a>
+</li>
+          <li id="section-4.1-2.3">
+            <p id="section-4.1-2.3.1"><span class="bcp14">SHALL</span> call the [Provider CDR Arrangement Revocation Endpoint (PCARE)] following;<a href="#section-4.1-2.3.1" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="compact type-1" id="section-4.1-2.3.2">
+<li id="section-4.1-2.3.2.1">revocation request is requested by the Consumer using the Initiator Consumer Dashboard or;<a href="#section-4.1-2.3.2.1" class="pilcrow">¶</a>
+</li>
+              <li id="section-4.1-2.3.2.2">where a refresh token has not been issued, as soon as practicable following the completion of data collection<a href="#section-4.1-2.3.2.2" class="pilcrow">¶</a>
+</li>
+            </ol>
+</li>
+          <li id="section-4.1-2.4">
+            <span class="bcp14">SHALL</span> support the [Initiator CDR Arrangement Revocation Endpoint (ICARE)]<a href="#section-4.1-2.4" class="pilcrow">¶</a>
+</li>
+          <li id="section-4.1-2.5">
+            <span class="bcp14">SHALL</span> retry requests to the [Provider CDR Arrangement Revocation Endpoint (PCARE)] where the response received was a HTTP Status 503. The retry time <span class="bcp14">SHOULD</span> be informed by the presence of the <code>Retry-After</code> header.<a href="#section-4.1-2.5" class="pilcrow">¶</a>
+</li>
+        </ol>
+</section>
+</div>
+<div id="initiator-cdr-arrangement-revocation-endpoint-icare">
+<section id="section-4.2">
+        <h3 id="name-initiator-cdr-arrangement-r">
+<a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-initiator-cdr-arrangement-r" class="section-name selfRef">Initiator CDR Arrangement Revocation Endpoint (ICARE)</a>
+        </h3>
+<p id="section-4.2-1">The Initiator CDR Arrangement (ICARE) Revocation endpoint accepts a CDR Sharing Arrangement Identifier and immediately revokes the CDR Sharing Arrangement.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
+<div id="icare-request">
+<section id="section-4.2.1">
+          <h4 id="name-icare-request">
+<a href="#section-4.2.1" class="section-number selfRef">4.2.1. </a><a href="#name-icare-request" class="section-name selfRef">ICARE Request</a>
+          </h4>
+<p id="section-4.2.1-1">The protected resource calls the ICARE endpoint using an HTTP POST <span>[<a href="#RFC7231" class="cite xref">RFC7231</a>]</span> request with parameters sent as <code>application/x-www-form-urlencoded</code> data as defined in <span>[<a href="#W3C.REC-html5-20141028" class="cite xref">W3C.REC-html5-20141028</a>]</span>.<a href="#section-4.2.1-1" class="pilcrow">¶</a></p>
+<p id="section-4.2.1-2"><code>cdr_arrangement_jwt</code>
+            <span class="bcp14">REQUIRED</span>. A single signed <span>[<a href="#JWT" class="cite xref">JWT</a>]</span> containing the following parameters:<a href="#section-4.2.1-2" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="compact type-1" id="section-4.2.1-3">
+<li id="section-4.2.1-3.1">
+              <code>cdr_arrangement_id</code> representing the CDR Sharing Arrangement Identifier previously provided in the introspection endpoint responses;<a href="#section-4.2.1-3.1" class="pilcrow">¶</a>
+</li>
+            <li id="section-4.2.1-3.2">
+              <code>iss</code>: Provider ID issued by the Ecosystem Authority<a href="#section-4.2.1-3.2" class="pilcrow">¶</a>
+</li>
+            <li id="section-4.2.1-3.3">
+              <code>sub</code>: Provider ID issued by the Ecosystem Authority<a href="#section-4.2.1-3.3" class="pilcrow">¶</a>
+</li>
+            <li id="section-4.2.1-3.4">
+              <code>aud</code>: URI to the ICARE endpoint<a href="#section-4.2.1-3.4" class="pilcrow">¶</a>
+</li>
+            <li id="section-4.2.1-3.5">
+              <code>jti</code>: A unique identifier for the token<a href="#section-4.2.1-3.5" class="pilcrow">¶</a>
+</li>
+            <li id="section-4.2.1-3.6">
+              <code>exp</code>: Expiration time on or after the JWT must not be accepted<a href="#section-4.2.1-3.6" class="pilcrow">¶</a>
+</li>
+          </ol>
+<p id="section-4.2.1-4">In addition, the client includes an <code>Authorization</code> header parameter with a Bearer token containing a single signed <span>[<a href="#JWT" class="cite xref">JWT</a>]</span> with the following parameters:<a href="#section-4.2.1-4" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="compact type-1" id="section-4.2.1-5">
+<li id="section-4.2.1-5.1">
+              <code>iss</code>: Provider ID issued by the Ecosystem Authority<a href="#section-4.2.1-5.1" class="pilcrow">¶</a>
+</li>
+            <li id="section-4.2.1-5.2">
+              <code>sub</code>: Provider ID issued by the Ecosystem Authority<a href="#section-4.2.1-5.2" class="pilcrow">¶</a>
+</li>
+            <li id="section-4.2.1-5.3">
+              <code>aud</code>: URI to the ICARE endpoint<a href="#section-4.2.1-5.3" class="pilcrow">¶</a>
+</li>
+            <li id="section-4.2.1-5.4">
+              <code>jti</code>: A unique identifier for the token<a href="#section-4.2.1-5.4" class="pilcrow">¶</a>
+</li>
+            <li id="section-4.2.1-5.5">
+              <code>exp</code>: Expiration time on or after the JWT must not be accepted<a href="#section-4.2.1-5.5" class="pilcrow">¶</a>
+</li>
+          </ol>
+<p id="section-4.2.1-6">For example, a Provider may request CDR Arrangement revocation with the following request:<a href="#section-4.2.1-6" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-4.2.1-7">
+<pre>POST https://data.Initiator.com.au/arrangements/revoke HTTP/1.1
+Host: data.Initiator.com.au
+Content-Type: application/x-www-form-urlencoded
+Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey …
+
+cdr_arrangement_jwt=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey ...&amp;
+
+</pre><a href="#section-4.2.1-7" class="pilcrow">¶</a>
+</div>
+<p id="section-4.2.1-8">The Initiator first validates the Provider credentials and then verifies whether the CDR Sharing Arrangement Identifier exists and was issued by the Provider making the CDR Arrangement Revocation request. If this validation fails, the request is refused and the Provider is informed of the error by the ICARE endpoint as described below.<a href="#section-4.2.1-8" class="pilcrow">¶</a></p>
+<p id="section-4.2.1-9">In the next step, the Initiator invalidates the CDR Arrangement and <span class="bcp14">SHOULD</span> discard associated tokens. Data Minimisation events <span class="bcp14">SHOULD</span> also be triggered on receipt of this event.<a href="#section-4.2.1-9" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="icare-response">
+<section id="section-4.2.2">
+          <h4 id="name-icare-response">
+<a href="#section-4.2.2" class="section-number selfRef">4.2.2. </a><a href="#name-icare-response" class="section-name selfRef">ICARE Response</a>
+          </h4>
+<div id="successful-response-1">
+<section id="section-4.2.2.1">
+            <h5 id="name-successful-response-2">
+<a href="#section-4.2.2.1" class="section-number selfRef">4.2.2.1. </a><a href="#name-successful-response-2" class="section-name selfRef">Successful Response</a>
+            </h5>
+<p id="section-4.2.2.1-1">In the event of a successful revocation, the Initiator:<a href="#section-4.2.2.1-1" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="compact type-1" id="section-4.2.2.1-2">
+<li id="section-4.2.2.1-2.1">if the CDR Sharing Arrangement is revoked, <span class="bcp14">SHALL</span> respond with a 204 HTTP status code containing no content<a href="#section-4.2.2.1-2.1" class="pilcrow">¶</a>
+</li>
+              <li id="section-4.2.2.1-2.2">if the CDR Sharing Arrangement was already revoked prior to the request being received, <span class="bcp14">SHOULD</span> respond with a 204 HTTP status code containing no content<a href="#section-4.2.2.1-2.2" class="pilcrow">¶</a>
+</li>
+            </ol>
+</section>
+</div>
+<div id="failure-response-1">
+<section id="section-4.2.2.2">
+            <h5 id="name-failure-response-2">
+<a href="#section-4.2.2.2" class="section-number selfRef">4.2.2.2. </a><a href="#name-failure-response-2" class="section-name selfRef">Failure Response</a>
+            </h5>
+<p id="section-4.2.2.2-1">In the event of a failure to validate the CDR Arrangement conditions the Initiator:<a href="#section-4.2.2.2-1" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="compact type-1" id="section-4.2.2.2-2">
+<li id="section-4.2.2.2-2.1">
+                <span class="bcp14">SHALL</span> respond with a  422 Unprocessable Entity response containing a JSON payload structured as as described below and;<a href="#section-4.2.2.2-2.1" class="pilcrow">¶</a>
+</li>
+              <li id="section-4.2.2.2-2.2">
+                <span class="bcp14">SHOULD</span> respond with a 503 Service Unavailable if currently unavailable and <span class="bcp14">MAY</span> supply a <code>Retry-After</code> indicating the earliest retry time<a href="#section-4.2.2.2-2.2" class="pilcrow">¶</a>
+</li>
+            </ol>
+<div id="failure-response-body-1">
+<section id="section-4.2.2.2.1">
+              <h6 id="name-failure-response-body-2">
+<a href="#section-4.2.2.2.1" class="section-number selfRef">4.2.2.2.1. </a><a href="#name-failure-response-body-2" class="section-name selfRef">Failure Response Body</a>
+              </h6>
+<p id="section-4.2.2.2.1-1">The failure response body is an object with a single attribute of <code>errors</code> containing an array of one object with the following fields:<a href="#section-4.2.2.2.1-1" class="pilcrow">¶</a></p>
+<ul class="compact">
+<li class="compact" id="section-4.2.2.2.1-2.1">
+                  <code>code</code> with the value of <code>urn:au-cds:error:cds-all:Authorisation/InvalidArrangement</code><a href="#section-4.2.2.2.1-2.1" class="pilcrow">¶</a>
+</li>
+                <li class="compact" id="section-4.2.2.2.1-2.2">
+                  <code>title</code> with the value of <code>The arrangement could not be found.</code><a href="#section-4.2.2.2.1-2.2" class="pilcrow">¶</a>
+</li>
+                <li class="compact" id="section-4.2.2.2.1-2.3">
+                  <code>detail</code> with a value containing the provided <code>cdr_arrangement_id</code><a href="#section-4.2.2.2.1-2.3" class="pilcrow">¶</a>
+</li>
+              </ul>
+<p id="section-4.2.2.2.1-3">A non-normative example of the payload is provided below:<a href="#section-4.2.2.2.1-3" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-4.2.2.2.1-4">
+<pre>{
+    "errors": [
+        {
+            "code": "urn:au-cds:error:cds-all:Authorisation/InvalidArrangement",
+            "title": "The arrangement could not be found.",
+            "detail": "b3f0c9d0-457d-4578-b0cd-52e443ae13c5"
+        }
+    ]
+}
+
+</pre><a href="#section-4.2.2.2.1-4" class="pilcrow">¶</a>
+</div>
+</section>
+</div>
+</section>
+</div>
+</section>
+</div>
+</section>
+</div>
+</section>
+</div>
+<div id="implementation-considerations">
+<section id="section-5">
+      <h2 id="name-implementation-consideratio">
+<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-implementation-consideratio" class="section-name selfRef">Implementation Considerations</a>
+      </h2>
+<p id="section-5-1">Where a Initiator, by way of the [Request Object], requests to update an existing authorisation grant through the supply of the <code>cdr_arrangement_id</code> some ecosystems may apply additional expectations with respect to the authorisation flow. Within the Australian Consumer Data Right this is summarised within the <em>CX Standards: Amending Authorisation</em> section of the <span>[<a href="#CDS" class="cite xref">CDS</a>]</span>.<a href="#section-5-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="security-considerations">
+<section id="section-6">
+      <h2 id="name-security-considerations">
+<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
+      </h2>
+<p id="section-6-1">The CDR Sharing Arrangement Identifier <span class="bcp14">SHALL NOT</span> be guessable, derivable nor identify the Consumer.<a href="#section-6-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<section id="section-7">
+      <h2 id="name-normative-references">
+<a href="#section-7" class="section-number selfRef">7. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+      </h2>
+<dl class="references">
+<dt id="CDS">[CDS]</dt>
+      <dd>
+<span class="refAuthor">Data Standards Body (Treasury)</span>, <span class="refTitle">"Consumer Data Standards (CDS)"</span>, <span>&lt;<a href="https://consumerdatastandardsaustralia.github.io/standards">https://consumerdatastandardsaustralia.github.io/standards</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="DATARIGHTPLUS-INFOSEC-BASELINE">[DATARIGHTPLUS-INFOSEC-BASELINE]</dt>
+      <dd>
+<span class="refAuthor">Low, S.</span>, <span class="refTitle">"DataRight+ Security Profile: Baseline"</span>, <span>&lt;<a href="https://datarightplus.github.io/datarightplus-infosec-baseline/draft-authors-datarightplus-infosec-baseline.html">https://datarightplus.github.io/datarightplus-infosec-baseline/draft-authors-datarightplus-infosec-baseline.html</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="DATARIGHTPLUS-ROSETTA">[DATARIGHTPLUS-ROSETTA]</dt>
+      <dd>
+<span class="refAuthor">Low, S.</span>, <span class="refTitle">"DataRight+ Rosetta Stone"</span>, <span>&lt;<a href="https://datarightplus.github.io/datarightplus-rosetta/draft-authors-datarightplus-rosetta.html">https://datarightplus.github.io/datarightplus-rosetta/draft-authors-datarightplus-rosetta.html</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="JWT">[JWT]</dt>
+      <dd>
+<span class="refAuthor">Jones, M.</span>, <span class="refAuthor">Bradley, J.</span>, and <span class="refAuthor">N. Sakimura</span>, <span class="refTitle">"JSON Web Token (JWT)"</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc7519">https://datatracker.ietf.org/doc/html/rfc7519</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="OIDC-Discovery">[OIDC-Discovery]</dt>
+      <dd>
+<span class="refAuthor">Sakimura, N.</span>, <span class="refAuthor">Bradley, J.</span>, <span class="refAuthor">Jones, M.</span>, and <span class="refAuthor">E. Jay</span>, <span class="refTitle">"OpenID Connect Discovery 1.0 incorporating errata set 1"</span>, <time datetime="2014-11-08" class="refDate">8 November 2014</time>, <span>&lt;<a href="https://openid.net/specs/openid-connect-discovery-1_0.html">https://openid.net/specs/openid-connect-discovery-1_0.html</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC2119">[RFC2119]</dt>
+      <dd>
+<span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC7231">[RFC7231]</dt>
+      <dd>
+<span class="refAuthor">Fielding, R., Ed.</span> and <span class="refAuthor">J. Reschke, Ed.</span>, <span class="refTitle">"Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content"</span>, <span class="seriesInfo">RFC 7231</span>, <span class="seriesInfo">DOI 10.17487/RFC7231</span>, <time datetime="2014-06" class="refDate">June 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7231">https://www.rfc-editor.org/info/rfc7231</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC7523">[RFC7523]</dt>
+      <dd>
+<span class="refAuthor">Jones, M.</span>, <span class="refAuthor">Campbell, B.</span>, and <span class="refAuthor">C. Mortimore</span>, <span class="refTitle">"JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants"</span>, <span class="seriesInfo">RFC 7523</span>, <span class="seriesInfo">DOI 10.17487/RFC7523</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7523">https://www.rfc-editor.org/info/rfc7523</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="W3C.REC-html5-20141028">[W3C.REC-html5-20141028]</dt>
+    <dd>
+<span class="refAuthor">Navara, E. D., Ed.</span>, <span class="refAuthor">Hickson, I., Ed.</span>, <span class="refAuthor">Berjon, R., Ed.</span>, <span class="refAuthor">Pfeiffer, S., Ed.</span>, <span class="refAuthor">Faulkner, S., Ed.</span>, <span class="refAuthor">O'Connor, T., Ed.</span>, and <span class="refAuthor">T. Leithead, Ed.</span>, <span class="refTitle">"HTML5"</span>, <span class="seriesInfo">W3C REC REC-html5-20141028</span>, <span class="seriesInfo">W3C REC-html5-20141028</span>, <time datetime="2014-10-28" class="refDate">28 October 2014</time>, <span>&lt;<a href="https://www.w3.org/TR/2014/REC-html5-20141028/">https://www.w3.org/TR/2014/REC-html5-20141028/</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+</dl>
+</section>
+<div id="authors-addresses">
+<section id="appendix-A">
+      <h2 id="name-authors-addresses">
+<a href="#name-authors-addresses" class="section-name selfRef">Authors' Addresses</a>
+      </h2>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Stuart Low</span></div>
+<div dir="auto" class="left"><span class="org">Biza.io</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:stuart@biza.io" class="email">stuart@biza.io</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Ben Kolera</span></div>
+<div dir="auto" class="left"><span class="org">Biza.io</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:bkolera@biza.io" class="email">bkolera@biza.io</a>
+</div>
+</address>
+</section>
+</div>
+<script>const toc = document.getElementById("toc");
+toc.querySelector("h2").addEventListener("click", e => {
+  toc.classList.toggle("active");
+});
+toc.querySelector("nav").addEventListener("click", e => {
+  toc.classList.remove("active");
+});
+</script>
+</body>
+</html>
