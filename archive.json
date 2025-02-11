@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-01-30T00:26:34.816666+00:00",
+  "timestamp": "2025-02-11T00:27:38.358358+00:00",
   "repo": "datarightplus/datarightplus-sharing-arrangement-v1",
   "labels": [
     {
@@ -75,6 +75,34 @@
       "mergedBy": "perlboy",
       "mergeCommit": {
         "oid": "7eb5cb2117179cf93a5cd9b3ba8f4849b358a125"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 2,
+      "id": "PR_kwDOJxPKGc6KiSwC",
+      "title": "Update github workflow",
+      "url": "https://github.com/datarightplus/datarightplus-sharing-arrangement-v1/pull/2",
+      "state": "MERGED",
+      "author": "perlboy",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-02-09T00:37:37Z",
+      "updatedAt": "2025-02-09T00:38:38Z",
+      "baseRepository": "datarightplus/datarightplus-sharing-arrangement-v1",
+      "baseRefName": "main",
+      "baseRefOid": "e6b03d62fbe8b9abc1aa40a351044cced4954d6a",
+      "headRepository": "datarightplus/datarightplus-sharing-arrangement-v1",
+      "headRefName": "upgrade-github-workflow",
+      "headRefOid": "010ddbba72280c156061cfa9db5c20e795e84a06",
+      "closedAt": "2025-02-09T00:38:38Z",
+      "mergedAt": "2025-02-09T00:38:38Z",
+      "mergedBy": "perlboy",
+      "mergeCommit": {
+        "oid": "b0ef73bace7365ec84468b63ce0d79467eb545c7"
       },
       "comments": [],
       "reviews": []
